@@ -1,7 +1,7 @@
 package Riker.BlackJack;
 
 /**
- * <b>Title</B>: Card.java Description: java code of a card. card object will 
+ * <b>Title</B>: Card.java Description: Java code of a card. A card object will 
  * 		at minimum hold a rank, suit, and value.
  * 
  * Copyright: Copyright (c) 2014 Company: Silicon Mountain Technologies

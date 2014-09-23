@@ -1,7 +1,7 @@
 package Riker.BlackJack;
 
 /**
- * <b>Title</B>: Person.java Description: java code of a person. A person object
+ * <b>Title</B>: Person.java Description: Java code of a person. A person object
  * 		will at minimum hold a first and last name as strings, and personalID 
  * 		and age as integers.  
  * 
