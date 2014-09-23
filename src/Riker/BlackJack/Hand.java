@@ -57,9 +57,5 @@ public class Hand {
 		value = value + newCard.getValue();
 	}
 
-	public String getRank() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

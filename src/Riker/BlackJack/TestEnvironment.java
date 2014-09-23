@@ -30,6 +30,8 @@ public class TestEnvironment {
 	 */
 	
 	public void process() {
+		
+		int playerPopulation = 0;
 
 		Card testCard = new Card();
 		
@@ -40,12 +42,14 @@ public class TestEnvironment {
 		System.out.println("card rank: " + testCard.getRank() + " card suit: " 
 				+ testCard.getSuit() + " card value: " + testCard.getValue());
 		
-		Person testPerson = new Person();
+		Player testPerson = new Player();
+		playerPopulation++;
 		
 		testPerson.setFirstName("Baron_duke");
 		testPerson.setLastName("Ferdinand");
 		testPerson.setAge(151);
 		testPerson.setPersonalID(1138);
+	
 		
 		System.out.println("first name: " + testPerson.getFirstName() + 
 				" last name: " + testPerson.getLastName() + " age: " + 
@@ -65,8 +69,24 @@ public class TestEnvironment {
 		System.out.println("the hands value is: " + testHand.getValue());
 		System.out.println("the num of cards in hand is: " + 
 				testHand.getNumberOfCardsInHand());
-		System.out.println("the rank of card 1 is " + testHand.getRank());
+		//perhaps write a way to display cards.
 		
+		testPerson.setHand(testHand);
+		
+		Dealer testDealer = new Dealer();
+		playerPopulation++;
+		
+		testDealer.setFirstName("Lester");
+		testDealer.setLastName("Alabama");
+		testDealer.setAge(35);
+		testDealer.setPersonalID(1139);
+		
+		System.out.println("population is: " + playerPopulation);
+	
+		System.out.println("first name: " + testDealer.getFirstName() + 
+				" last name: " + testDealer.getLastName() + " age: " + 
+				testDealer.getAge() + " personal ID:#" + 
+				testDealer.getPersonalID());
 	}
 
 }

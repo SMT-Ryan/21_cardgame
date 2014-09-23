@@ -15,13 +15,18 @@ public class Player extends Person {
 	private String playerAlias = null;
 	private boolean isDealer = false;
 	private int wallet = 0;
-	//TODO declare hand here
+	private Hand hand = new Hand();
+
 	
 	
 	//empty constructor
 	public Player() {
 		
 	}
+	
+	//write the code to place a bet here
+	
+	
 
 	//getters and setters
 	public String getPlayerAlias() {
@@ -46,6 +51,14 @@ public class Player extends Person {
 
 	public void setWallet(int wallet) {
 		this.wallet = wallet;
+	}
+
+	public Hand getHand() {
+		return hand;
+	}
+
+	public void setHand(Hand hand) {
+		this.hand = hand;
 	}
 
 }
