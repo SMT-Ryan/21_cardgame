@@ -24,11 +24,9 @@ public class Dealer extends Player {
  * @param hand
  * @param deck
  */
-	public void startHand(Hand hand, Deck deck) {
+	public void drawCardToHand(Hand hand, Deck deck) {
 		
 		hand.addCardToHand(((StandardDeck) deck).getCard());
-		
-		
 	}
 	
 	

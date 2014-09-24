@@ -37,9 +37,9 @@ public class Hand {
 		 
 		 for ( int count = 0 ; count < numberOfCardsInHand; count++ ) {
 
-			 System.out.println("the shuffled card is " + 
-					 cardsInHand.get(count).getSuit() + 
-						 " and " + cardsInHand.get(count).getRank());
+			 System.out.println("in the hand is card rank: " + 
+					 cardsInHand.get(count).getRank() + " and suit " 
+						 + cardsInHand.get(count).getSuit());
 		 }
 	}
 	

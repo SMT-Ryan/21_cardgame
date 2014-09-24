@@ -53,10 +53,6 @@ public class TestEnvironment {
 		System.out.println(testPerson.getFirstName() + " and " +
 				testDealer.getFirstName() + " are playing");
 		
-	
-		
-		
-		
 		/*Hand testHand = new Hand();
 		testHand.addCardToHand();
 		System.out.println("the hands value is: " + testHand.getValue());
@@ -69,23 +65,17 @@ public class TestEnvironment {
 		
 		Deck testDeck = new StandardDeck();
 		
+		testDeck = testDeck.shuffle(testDeck);	
+		
 		((StandardDeck) testDeck).printDeck();
 		
-		testDealer.startHand(testDealer.getHand(), testDeck);
-
-		((StandardDeck) testDeck).printDeck();
+		testDealer.drawCardToHand(testDealer.getHand(), testDeck);
+		testDealer.drawCardToHand(testDealer.getHand(), testDeck);
+		testDealer.drawCardToHand(testDealer.getHand(), testDeck);
 		
-		/*((StandardDeck) testDeck).getCard();*/
+		((StandardDeck) testDeck).printDeck();
 		
 		testDealer.printHand();
-
-		((StandardDeck) testDeck).printDeck();
-		
-		/*testDeck = testDeck.shuffle(testDeck);		
-		
-		((StandardDeck) testDeck).printDeck();
-		
-		((StandardDeck) testDeck).getCard();*/
 	}
 	
 	
