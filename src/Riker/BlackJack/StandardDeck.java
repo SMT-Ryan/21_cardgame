@@ -70,6 +70,7 @@ public class StandardDeck implements Deck{
 
 	public void printDeck(){
 		// write print function
+		System.out.println("the deck has :#" + readyCards.size() + " cards left.");
 		
 	}
 	

@@ -90,6 +90,11 @@ public class TestEnvironment {
 		
 		testPerson.printHand();
 		
+		Deck testDeck = new StandardDeck();
+		
+		((StandardDeck) testDeck).printDeck();
+		
+		
 		
 	}
 	
