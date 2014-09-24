@@ -23,6 +23,12 @@ public class Card {
 		
 	}
 
+	//complete constructor
+	public Card(int rank, int suit) {
+		this.rank = rank;
+		this.suit = suit;
+	}
+
 	public int getRank() {
 		return rank;
 	}

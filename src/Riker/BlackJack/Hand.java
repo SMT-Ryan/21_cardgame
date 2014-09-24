@@ -3,7 +3,6 @@ package Riker.BlackJack;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
 * <b>Title</B>: Player.java Description: Java Code for a hand of cards Object.  
 * 
