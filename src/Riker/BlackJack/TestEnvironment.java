@@ -25,7 +25,7 @@ public class TestEnvironment {
 	}
 	
 	/**
-	 * The process method performs the functionality of the game.
+	 * This is the testing class here i will be writing code to test before adding it to my game.
 	 * 
 	 */
 	
