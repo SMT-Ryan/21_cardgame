@@ -94,6 +94,9 @@ public class TestEnvironment {
 		
 		((StandardDeck) testDeck).printDeck();
 		
+		testDeck = testDeck.shuffle(testDeck);		
+		
+		((StandardDeck) testDeck).printDeck();
 		
 		
 	}

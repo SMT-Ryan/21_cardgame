@@ -1,5 +1,7 @@
 package Riker.BlackJack;
 
+import java.util.List;
+
 /**
  * <b>Title</B>: Deck.java Description: Java code for a interface that controls
  * 		a deck of cards. A deck will have at minimum a shuffle and reload 
@@ -16,7 +18,10 @@ package Riker.BlackJack;
 public interface Deck {
 	
 	//mandatory methods
-public void shuffle();
+public Deck shuffle(Deck deck);
 public void reload();
+public List<Card> getReadyCards();
+
+
 
 }
