@@ -19,5 +19,17 @@ public class Dealer extends Player {
 	public Dealer() {
 		this.setWallet(500);
 	}
-
+/**
+ * 
+ * @param hand
+ * @param deck
+ */
+	public void startHand(Hand hand, Deck deck) {
+		
+		hand.addCardToHand(((StandardDeck) deck).getCard());
+		
+		
+	}
+	
+	
 }

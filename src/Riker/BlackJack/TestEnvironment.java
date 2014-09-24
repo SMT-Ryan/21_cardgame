@@ -33,15 +33,6 @@ public class TestEnvironment {
 		
 		int playerPopulation = 0;
 
-		Card testCard = new Card();
-		
-		testCard.setRank(2);
-		testCard.setSuit(21);
-		testCard.setValue(1138);
-		
-		System.out.println("card rank: " + testCard.getRank() + " card suit: " 
-				+ testCard.getSuit() + " card value: " + testCard.getValue());
-		
 		Player testPerson = new Player();
 		playerPopulation++;
 		
@@ -49,29 +40,6 @@ public class TestEnvironment {
 		testPerson.setLastName("Ferdinand");
 		testPerson.setAge(151);
 		testPerson.setPersonalID(1138);
-	
-		
-		System.out.println("first name: " + testPerson.getFirstName() + 
-				" last name: " + testPerson.getLastName() + " age: " + 
-				testPerson.getAge() + " personal ID:#" + 
-				testPerson.getPersonalID());
-		
-		Card testCard2 = new Card();
-		
-		testCard2.setRank(1);
-		testCard2.setSuit(77);
-		testCard2.setValue(1979);
-		
-		Hand testHand = new Hand();
-		testHand.addCardToHand(testCard);
-		System.out.println("the hands value is: " + testHand.getValue());
-		testHand.addCardToHand(testCard2);
-		System.out.println("the hands value is: " + testHand.getValue());
-		System.out.println("the num of cards in hand is: " + 
-				testHand.getNumberOfCardsInHand());
-		//perhaps write a way to display cards.
-		
-		testPerson.setHand(testHand);
 		
 		Dealer testDealer = new Dealer();
 		playerPopulation++;
@@ -80,25 +48,44 @@ public class TestEnvironment {
 		testDealer.setLastName("Alabama");
 		testDealer.setAge(35);
 		testDealer.setPersonalID(1139);
-		
+
 		System.out.println("population is: " + playerPopulation);
-	
-		System.out.println("first name: " + testDealer.getFirstName() + 
-				" last name: " + testDealer.getLastName() + " age: " + 
-				testDealer.getAge() + " personal ID:#" + 
-				testDealer.getPersonalID());
+		System.out.println(testPerson.getFirstName() + " and " +
+				testDealer.getFirstName() + " are playing");
 		
+	
+		
+		
+		
+		/*Hand testHand = new Hand();
+		testHand.addCardToHand();
+		System.out.println("the hands value is: " + testHand.getValue());
+		testHand.addCardToHand(testCard2);
+		System.out.println("the hands value is: " + testHand.getValue());
+		System.out.println("the number of cards in hand is: " + 
+				testHand.getNumberOfCardsInHand());*/
+
 		testPerson.printHand();
 		
 		Deck testDeck = new StandardDeck();
 		
 		((StandardDeck) testDeck).printDeck();
 		
-		testDeck = testDeck.shuffle(testDeck);		
+		testDealer.startHand(testDealer.getHand(), testDeck);
+
+		((StandardDeck) testDeck).printDeck();
+		
+		/*((StandardDeck) testDeck).getCard();*/
+		
+		testDealer.printHand();
+
+		((StandardDeck) testDeck).printDeck();
+		
+		/*testDeck = testDeck.shuffle(testDeck);		
 		
 		((StandardDeck) testDeck).printDeck();
 		
-		
+		((StandardDeck) testDeck).getCard();*/
 	}
 	
 	

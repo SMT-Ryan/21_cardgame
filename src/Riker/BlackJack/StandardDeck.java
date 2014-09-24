@@ -54,20 +54,13 @@ public class StandardDeck implements Deck{
     List<Card> discardPile = new ArrayList<>(52);
 
 	
-	//empty constructor
+	//constructor
 	public StandardDeck() {
 		
-		for(int count = 1; count <= KING; count++ ){
-			readyCards.add(new Card(count , DIAMONDS));
-		}
-		for(int count = 1; count <= KING; count++ ){
-			readyCards.add(new Card(count , CLUBS));
-		}
-		for(int count = 1; count <= KING; count++ ){
-			readyCards.add(new Card(count , HEARTS));
-		}
-		for(int count = 1; count <= KING; count++ ){
-			readyCards.add(new Card(count , SPADES));
+		for(int suitCount = 1; suitCount <= SPADES; suitCount++){
+			for(int count = 1; count <= KING; count++ ){
+				readyCards.add(new Card(count , suitCount));
+			}
 		}
 	}
 
@@ -81,12 +74,9 @@ public class StandardDeck implements Deck{
 		String currentRank = null;
 		String currentSuit = null;
 		
+		System.out.println();
 		System.out.println("the deck has :#" + readyCards.size() + 
 				" cards left.");
-		System.out.println();
-		
-		System.out.println("List of cards size : " + readyCards.size());
-		
 		System.out.println();
 		 
 		 for ( int count = 0 ; count < readyCards.size(); count++ ) {
@@ -95,29 +85,47 @@ public class StandardDeck implements Deck{
 			 
 			 currentSuit = setCurrentSuit(readyCards.get(count).getSuit());
 			 	 
-			 System.out.println("the shuffled card is " + 
-					currentRank + " and " + currentSuit);
+			 System.out.println("The " + currentRank + " of " + currentSuit);
 		 }
 	}
 	
-
-
-/**
- * Takes the existing list of cards and shuffles them into random order
- * 	@Override
- * 	@return the list of cards after being shuffled.
- */
+	/**
+	 * Takes the existing list of cards and shuffles them into random order
+	 * 	@Override
+	 * 	@return the list of cards after being shuffled.
+	 */
 	public Deck shuffle(Deck deck) {
 		
 		Collections.shuffle(deck.getReadyCards());
 		return deck;
 	}
 
+	/**
+	 * method that returns the list of cards in a deck.
+	 */
 	public List<Card> getReadyCards(){
 		return readyCards;
 	}
 	
-	@Override
+	/**
+	 * returns the card at the top of the array.
+	 * @return activeCard
+	 */
+	public Card getCard(){
+		Card activeCard = new Card();
+		
+		activeCard = readyCards.get(0);
+		readyCards.remove(0);
+		
+		System.out.println("active card rank" + activeCard.getRank() + " and " + 
+				activeCard.getSuit());
+		return activeCard;
+	}
+	
+	/**
+	 * reloads the discarded cards to the deck
+	 * @Override
+	 */
 	public void reload() {
 		// TODO Auto-generated method stub
 		
