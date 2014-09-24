@@ -87,6 +87,12 @@ public class TestEnvironment {
 				" last name: " + testDealer.getLastName() + " age: " + 
 				testDealer.getAge() + " personal ID:#" + 
 				testDealer.getPersonalID());
+		
+		testPerson.printHand();
+		
+		
 	}
+	
+	
 
 }

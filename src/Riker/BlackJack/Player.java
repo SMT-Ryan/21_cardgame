@@ -1,5 +1,7 @@
 package Riker.BlackJack;
 
+import java.util.ArrayList;
+
 /**
 * <b>Title</B>: Player.java Description: Java Code for a player Object.  
 * 
@@ -25,9 +27,22 @@ public class Player extends Person {
 	}
 	
 	//write the code to place a bet here
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	
 	
+	
+	public void printHand(){
+		hand.printHand();
+	}
 
+	
 	//getters and setters
 	public String getPlayerAlias() {
 		return playerAlias;

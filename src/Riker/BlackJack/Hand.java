@@ -26,6 +26,25 @@ public class Hand {
 		
 	}
 
+
+	public void printHand() {
+		
+		System.out.println();
+		
+		System.out.println("number of cards in hand is : " + 
+				numberOfCardsInHand);
+		
+		System.out.println();
+		 
+		 for ( int count = 0 ; count < numberOfCardsInHand; count++ ) {
+
+			 System.out.println("the shuffled card is " + 
+					 cardsInHand.get(count).getSuit() + 
+						 " and " + cardsInHand.get(count).getRank());
+		 }
+	}
+	
+	
 	//setters and getters
 	public int getNumberOfCardsInHand() {
 		return numberOfCardsInHand;
