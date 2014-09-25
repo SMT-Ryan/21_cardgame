@@ -73,9 +73,8 @@ public class TestEnvironment {
 		testDealer.drawCardToHand(testDealer.getHand(), testDeck);
 		testDealer.drawCardToHand(testDealer.getHand(), testDeck);
 		
-		((StandardDeck) testDeck).printDeck();
-		
 		testDealer.getHand().printDealerHand(testDeck);
+		testDealer.getHand().printHand(testDeck);
 	}
 	
 	

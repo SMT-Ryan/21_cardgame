@@ -59,13 +59,14 @@ public class BlackJack implements CardGame {
 				dealer.getPlayerAlias() +".");
 		System.out.println("I will be dealing today");
 		
+		//start game setup.
 		//get number of players, declare and set all players.
 		System.out.println("How many of you folks are joining us today?");
 		increaseBy = addNewPlayers(players);
 		playerPopulation = playerPopulation + increaseBy;
 		
 		//draw cards for dealer
-		System.out.println("the dealer draws two cards");
+		System.out.println("The Dealers Hand:");
 		for (int i = 0 ; i <2; i++){
 		dealer.drawCardToHand(dealer.getHand(), deck);
 		}		
@@ -73,6 +74,8 @@ public class BlackJack implements CardGame {
 		//display first card
 		System.out.println("The dealer is showing a ");
 		dealer.getHand().printDealerHand(deck);
+		//end game setup
+		
 		
 		
 		//play players hands in order 1-?
@@ -88,6 +91,8 @@ public class BlackJack implements CardGame {
 		
 	}
 	
+
+
 	/**
 	 * This method iterates once per new none dealer player, it sets the variables 
 	 * for one new player per loop.

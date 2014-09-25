@@ -42,7 +42,6 @@ public class Player extends Person {
 		hand.printHand(deck);
 	}
 
-	
 	//getters and setters
 	public String getPlayerAlias() {
 		return playerAlias;
