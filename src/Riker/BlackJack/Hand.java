@@ -26,7 +26,34 @@ public class Hand {
 	}
 
 
-	public void printHand() {
+	public void printDealerHand(Deck deck){
+		
+		String currentRank = null;
+		String currentSuit = null;
+		
+		System.out.println();
+		
+		System.out.println("number of cards in hand is : " + 
+				numberOfCardsInHand);
+		
+		System.out.println();
+		
+		System.out.println("the dealers first card is face down");
+		 for ( int count = 1 ; count < numberOfCardsInHand; count++ ) {
+			 
+			currentRank = ((StandardDeck) deck).setCurrentRank(cardsInHand.
+						get(count).getRank());
+			currentSuit = ((StandardDeck) deck).setCurrentSuit(cardsInHand.
+					get(count).getRank());
+			
+			 System.out.println("in the hand is card rank: " + 
+					currentRank + " and suit " 
+						 + currentSuit);
+		 }
+		
+	}
+	
+	public void printHand(Deck deck) {
 		
 		System.out.println();
 		
@@ -37,9 +64,9 @@ public class Hand {
 		 
 		 for ( int count = 0 ; count < numberOfCardsInHand; count++ ) {
 
-			 System.out.println("in the hand is card rank: " + 
+			/* System.out.println("in the hand is card rank: " + 
 					 cardsInHand.get(count).getRank() + " and suit " 
-						 + cardsInHand.get(count).getSuit());
+						 + cardsInHand.get(count).getSuit());*/
 		 }
 	}
 	

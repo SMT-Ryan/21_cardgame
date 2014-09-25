@@ -29,7 +29,9 @@ public class BlackJack implements CardGame {
 		
 		int playerPopulation = 0;
 		int increaseBy = 0;
+		int betPool = 0;
 		List<Player> players = new ArrayList<Player>();
+		
 		
 		//declares a deck followed by shuffling the deck
 		Deck deck = new StandardDeck();
@@ -47,7 +49,7 @@ public class BlackJack implements CardGame {
 		playerPopulation++;
 		
 		//title message
-		System.out.println("Black Jack: a work in progress by Ryan J. Riker");
+		System.out.println("Black Jack: A work in progress by Ryan J. Riker");
 		System.out.println("(c)  Copyright 2014");
 		System.out.println("");
 		
@@ -55,15 +57,43 @@ public class BlackJack implements CardGame {
 		System.out.println("Welcome, my name is " + dealer.getFirstName() + " "
 				+ dealer.getLastName() + " but my friends call me " + 
 				dealer.getPlayerAlias() +".");
+		System.out.println("I will be dealing today");
 		
 		//get number of players, declare and set all players.
 		System.out.println("How many of you folks are joining us today?");
 		increaseBy = addNewPlayers(players);
 		playerPopulation = playerPopulation + increaseBy;
 		
+		//draw cards for dealer
+		System.out.println("the dealer draws two cards");
+		for (int i = 0 ; i <2; i++){
+		dealer.drawCardToHand(dealer.getHand(), deck);
+		}		
+		
+		//display first card
+		System.out.println("The dealer is showing a ");
+		dealer.getHand().printDealerHand(deck);
+		
+		
+		//play players hands in order 1-?
+	
+		
+		//testing code
 		System.out.println("number of players " + playerPopulation);
-
+		//test players list
+		for (int i = 0; i<players.size(); i++){
+			System.out.println("name: " + players.get(i).getFirstName());
+		}
+		
+		
 	}
+	
+	/**
+	 * This method iterates once per new none dealer player, it sets the variables 
+	 * for one new player per loop.
+	 * @param player passed in  the list of current players.
+	 * @return number of players added.
+	 */
 	private int addNewPlayers(List<Player> player) {
 		Scanner sc = new Scanner(System.in);
 		int numberOfPlayers = 0;
@@ -82,9 +112,9 @@ public class BlackJack implements CardGame {
 		newPlayer.setWallet(200);
 		newPlayer.setDealer(false);
 		
-		System.out.println("Please, enter your first name ");
+		System.out.println("Please, enter player" + (count+1) + "'s first name ");
 		newPlayer.setFirstName(sc.nextLine());
-		System.out.println("Please, enter your last name ");
+		System.out.println("Please, enter player" + (count+1) + "'s last name ");
 		newPlayer.setLastName(sc.nextLine());
 		System.out.println("let me know what you would prefer to be called?");
 		System.out.println("Its alrght if you dont want to be called something "
@@ -95,7 +125,6 @@ public class BlackJack implements CardGame {
 		
 		}
 		}
-		
 		
 		sc.close();
 		return numberOfPlayers;

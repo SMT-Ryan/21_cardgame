@@ -38,8 +38,8 @@ public class Player extends Person {
 	
 	
 	
-	public void printHand(){
-		hand.printHand();
+	public void printHand(Deck deck){
+		hand.printHand(deck);
 	}
 
 	

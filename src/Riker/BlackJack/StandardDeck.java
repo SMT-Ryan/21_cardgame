@@ -138,7 +138,7 @@ public class StandardDeck implements Deck{
 	 * @return a string value for card suit for display
 	 */
 	
-	private String setCurrentSuit(int currentSuit) {
+	public String setCurrentSuit(int currentSuit) {
 		String suit = null;
 		
 		switch(currentSuit){
@@ -170,7 +170,7 @@ public class StandardDeck implements Deck{
 	 * @return a string value of card rank for display
 	 */
 	
-	private String setCurrentRank(int currentRank){
+	public String setCurrentRank(int currentRank){
 		String rank = null;
 		
 		 switch (currentRank) {

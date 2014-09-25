@@ -61,10 +61,10 @@ public class TestEnvironment {
 		System.out.println("the number of cards in hand is: " + 
 				testHand.getNumberOfCardsInHand());*/
 
-		testPerson.printHand();
+
 		
 		Deck testDeck = new StandardDeck();
-		
+		testPerson.printHand(testDeck);
 		testDeck = testDeck.shuffle(testDeck);	
 		
 		((StandardDeck) testDeck).printDeck();
@@ -75,7 +75,7 @@ public class TestEnvironment {
 		
 		((StandardDeck) testDeck).printDeck();
 		
-		testDealer.printHand();
+		testDealer.getHand().printDealerHand(testDeck);
 	}
 	
 	
