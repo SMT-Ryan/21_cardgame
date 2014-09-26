@@ -18,8 +18,7 @@ public class Message {
 	public Message() {
 		
 	}
-	
-	
+
 /**
  * This method displays the standard English messages
  * @param m
@@ -34,7 +33,23 @@ public class Message {
 		break;
 		case 2:
 			System.out.println("How many of you folks are joining us today?");
-			break;
+		break;
+		case 3:
+			System.out.println("That was not a number, plase try again");
+		break;
+		case 4:
+			System.out.println("its time for everyone to anti up!");
+			System.out.println();
+		break;
+		case 5:
+			System.out.println("selecting a name has gone horribly wrong.");
+		break;
+		case 6:
+			System.out.println("let me know what you would prefer to be "
+					+ "called?");
+			System.out.println("Its alrght if you dont want to be called "
+					+ "something special just press the ENTER key");
+		break;
 		default:
 		break;
 		}
@@ -88,6 +103,11 @@ public class Message {
 		System.out.println("the deck has :#" + value + 
 				" cards left.");
 		System.out.println();
+		break;
+		case 4:
+			System.out.println("Please, enter player" + value + 
+					"'s first name ");
+		break;
 		default:
 		break;
 		}
@@ -122,6 +142,46 @@ public class Message {
 		
 	}
 	
+	/**
+	 * This method displays an English message that requires two integers to 
+	 * 	display correctly
+	 * @param m
+	 * @param value1
+	 * @param value2
+	 */
+	public void displayEnglishMessage(int m, int value1, int value2){
+		switch (m){
+		case 1:
+			System.out.println("player " + value1 + " you have " + value2 + 
+					" left in your wallet.");
+			
+			System.out.println("Player " + value1 + " please enter the amount "
+					+ "you wish to risk.");
+		break;
+		default:
+		break;
 	
-	
+		}
+		
+	}
+	/** 
+	 * This method displays an English message that requires an integer and a
+	 * 	string to display correctly.
+	 * @param m
+	 * @param value
+	 * @param string
+	 */
+	public void displayEnglishMessage(int m, int value, String string){
+		switch (m){
+		case 1:
+			System.out.println( string + " you have " + value + 
+					" left in your wallet.");
+			
+			System.out.println(string + " please enter the amount you wish to "
+					+ "risk.");
+		break;
+		default:
+		break;
+		}
+	}
 }

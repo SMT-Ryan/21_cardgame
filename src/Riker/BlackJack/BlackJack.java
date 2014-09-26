@@ -58,60 +58,42 @@ public class BlackJack implements CardGame {
 	 * @param dealer 
 	 */
 	public void playHand(List<Player> players, Deck deck, Dealer dealer) {
-	
+		Message mg = new Message();
 		//int bet = 0;
 		//boolean b = true;
-		
-		System.out.println("its time for everyone to anti up!");
-		
-		
+		mg.displayEnglishMessage(4);
+
 		for (int i = 0 ; i < players.size(); i++){
 				if (players.get(i).isDealer() == true){
-					System.out.println("So partners whats your bets?");
+					//skips over the dealer-player due to them not betting
 				}else{
 					if (players.get(i).getFirstName().equals("") && 
 							players.get(i).getPlayerAlias().equals("")){
 					/*
 					 * address user by player number
 					 */
-					System.out.println("player " + i + " you have " +
-							players.get(i).getWallet() + 
-							" left in your wallet.1");
-					
-					
-					System.out.println("Player " + i + 
-							" please enter the amount "
-							+ "you wish to risk.");
+						mg.displayEnglishMessage(4, i, 
+								players.get(i).getWallet());
 					
 					}else if(players.get(i).getFirstName().equals("")  ||
 							!players.get(i).getPlayerAlias().equals("") ){
 						/*
 						 * address user by nickname
 						 */
-						System.out.println(players.get(i).getPlayerAlias() + 
-								" you have " + players.get(i).getWallet() + 
-								" left in your wallet.2");
-						
-						System.out.println(players.get(i).getPlayerAlias() + 
-								" please enter the amount "+ 
-								"you wish to risk.");
+						mg.displayEnglishMessage(1, players.get(i).getWallet(), 
+								players.get(i).getPlayerAlias());
 
 					}else if (players.get(i).getPlayerAlias().equals("")  || 
 							!players.get(i).getFirstName().equals("") ){
 						/*
 						 * address user by first name
 						 */
-						System.out.println(players.get(i).getFirstName() + 
-								" you have " + players.get(i).getWallet() + 
-								" left in your wallet.3");
-						
-						System.out.println(players.get(i).getFirstName() + 
-								" please enter the amount "+ 
-								"you wish to risk.");
+						mg.displayEnglishMessage(1, players.get(i).getWallet(), 
+								players.get(i).getFirstName());
+
 					}else{
 						//error
-						System.out.println("selecting a name has gone horribly "
-								+ "wrong.");
+						mg.displayEnglishMessage(5);
 					}
 				}
 				//collect bets from all players
@@ -151,16 +133,17 @@ public class BlackJack implements CardGame {
 	 */
 private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players, 
 		Deck deck) {
-			Message em = new Message();
+			Message mg = new Message();
 			//title message
-			em.displayEnglishMessage(1);
+			mg.displayEnglishMessage(1);
 			
 			//welcome message
-			em.displayEnglishMessage(1, dealer);
+			
+			mg.displayEnglishMessage(1, dealer);
 			
 			//start game setup.
 			//get number of players, declare and set all players.
-			em.displayEnglishMessage(2);
+			mg.displayEnglishMessage(2);
 			playerPopulation = playerPopulation + addNewPlayers(players);
 			
 			//draw cards for dealer
@@ -194,6 +177,7 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 	 * @return number of players added.
 	 */
 	private int addNewPlayers(List<Player> player) {
+		Message mg = new Message();
 		int numberOfPlayers = 0;
 		
 		while(numberOfPlayers == 0){
@@ -202,29 +186,25 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 				numberOfPlayers = Integer.parseInt(getInput());
 	
 			} catch (java.util.NoSuchElementException e){
-				System.out.println("That was not a number, plase try again");
-			
+				mg.displayEnglishMessage(3);		
 			}
 		}
 		
 		for (int count = 0; count < numberOfPlayers; count++ ){
 			if (count != 1138){
-					
+				
 				Player newPlayer = new Player();
 				
 				newPlayer.setPersonalID(count);	
 				newPlayer.setWallet(200);
 				newPlayer.setDealer(false);
 		
-				System.out.println("Please, enter player" + (count+1) + 
-						"'s first name ");
-			
+				mg.displayEnglishMessage(4, (count+1));
+		
 				newPlayer.setFirstName(getInput());
 				
-				System.out.println("let me know what you would prefer to be "
-						+ "called?");
-				System.out.println("Its alrght if you dont want to be called "
-						+ "something special just press the ENTER key");
+				mg.displayEnglishMessage(6);
+
 				newPlayer.setPlayerAlias(getInput());
 				player.add(newPlayer);
 			
@@ -253,8 +233,6 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 	public String getInput(){
 		String input = "";
 		
-		
-		System.out.println("******************");
 		try {
 			input = ms.nextLine();
 		
@@ -263,9 +241,6 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 		}catch (NullPointerException e){		
 			e.printStackTrace();
 		}
-		
-		
-
 		
 		return input;
 		
