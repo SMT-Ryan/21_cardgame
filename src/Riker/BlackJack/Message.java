@@ -50,7 +50,26 @@ public class Message {
 			System.out.println("Its alrght if you dont want to be called "
 					+ "something special just press the ENTER key");
 		break;
+		case 7:
+			System.out.println("Well shoot, partner. looks like you have ace");
+			System.out.println("you can choose to have an ace valued at 1 or "
+					+ "11");
+			System.out.println("but choose wisely now, once its set its locked "
+					+ "in unless I change something in this program");
+			System.out.println("enter 1 or 11 for your aces value now.");
+		break;
+		case 8:
+			System.out.println("sorry my friend but that wasnt 1 or 11, try "
+					+ "again");
+			System.out.println();
+		break;
+		case 9:
+			System.out.println("something went horribly wrong assinging cards "
+					+ "value");
+		break;
 		default:
+			System.out.println("something went horribly wrong in the message "
+					+ "class");
 		break;
 		}
 	}
@@ -69,10 +88,9 @@ public class Message {
 					dealer.getPlayerAlias() +".");
 			System.out.println("I will be dealing today");
 		break;
-		case 2:
-			
-		break;
 		default:
+			System.out.println("something went horribly wrong in the message "
+					+ "class");
 		break;
 		}
 		
@@ -105,10 +123,12 @@ public class Message {
 		System.out.println();
 		break;
 		case 4:
-			System.out.println("Please, enter player" + value + 
+			System.out.println("Please, enter player " + value + 
 					"'s first name ");
 		break;
 		default:
+			System.out.println("something went horribly wrong in the message "
+					+ "class");
 		break;
 		}
 		
@@ -137,6 +157,8 @@ public class Message {
 			 System.out.println("The " + string1 + " of " + string2);
 		break;
 		default:
+			System.out.println("something went horribly wrong in the message "
+					+ "class");
 		break;
 		}
 		
@@ -159,6 +181,8 @@ public class Message {
 					+ "you wish to risk.");
 		break;
 		default:
+			System.out.println("something went horribly wrong in the message "
+					+ "class");
 		break;
 	
 		}
@@ -181,6 +205,8 @@ public class Message {
 					+ "risk.");
 		break;
 		default:
+			System.out.println("something went horribly wrong in the message "
+					+ "class");
 		break;
 		}
 	}

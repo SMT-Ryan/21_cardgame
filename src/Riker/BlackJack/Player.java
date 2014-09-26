@@ -27,18 +27,6 @@ public class Player extends Person {
 		
 	}
 	
-	//write the code to place a bet here
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	
-	
-	
 	public void printHand(Deck deck){
 		hand.printHand(deck);
 	}
