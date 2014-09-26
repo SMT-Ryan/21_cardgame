@@ -167,7 +167,8 @@ public class BlackJack implements CardGame {
 		for (int i = 0; i < hand.getNumberOfCardsInHand(); i++){
 			
 			setCardValue(i, hand, mg);
-			hand.setValue(hand.getValue() + hand.getCardsInHand().get(i).getValue()) ;
+			hand.setValue(hand.getValue() + 
+					hand.getCardsInHand().get(i).getValue()) ;
 			
 		}
 		//testing message
@@ -200,7 +201,7 @@ public class BlackJack implements CardGame {
 				
 				mg.displayEnglishMessage(7);
 				
-				if (Integer.parseInt(getInput()) != 1 || Integer.parseInt(getInput()) != 11) {
+				if (!getInput().equals("1") || !getInput().equals("11")) {
 					
 					mg.displayEnglishMessage(8);
 
@@ -326,8 +327,12 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 				
 				mg.displayEnglishMessage(6);
 
+
 				newPlayer.setPlayerAlias(getInput());
 				player.add(newPlayer);
+				
+				//TODO make a preferred name in player class if both are blank 
+				//set name to player [count]
 			
 			}
 		}

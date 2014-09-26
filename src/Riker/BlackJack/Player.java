@@ -20,8 +20,6 @@ public class Player extends Person {
 	private int betPool = 0;
 	private Hand hand = new Hand();
 
-	
-	
 	//empty constructor
 	public Player() {
 		
