@@ -27,18 +27,14 @@ public class Hand {
 
 
 	public void printDealerHand(Deck deck){
-		
+		Message mg = new Message();
 		String currentRank = null;
 		String currentSuit = null;
 		
 		System.out.println();
 		
-		System.out.println("number of cards in hand is : " + 
-				numberOfCardsInHand);
-		
-		System.out.println();
-		
-		System.out.println("The dealers first card is FACE DOWN.");
+		mg.displayEnglishMessage(1, numberOfCardsInHand);
+
 		 for ( int count = 1 ; count < numberOfCardsInHand; count++ ) {
 			 
 			currentRank = ((StandardDeck) deck).setCurrentRank(cardsInHand.
@@ -46,26 +42,19 @@ public class Hand {
 			currentSuit = ((StandardDeck) deck).setCurrentSuit(cardsInHand.
 					get(count).getSuit());
 			
-			 System.out.println("Also in the Dealer's hand is the " + 
-					currentRank + " of " 
-						 + currentSuit + ".");
-			System.out.println();
+		mg.displayEnglishMessage(1, currentRank, currentSuit);
+
 		 }
 		
 	}
 	
 	public void printHand(Deck deck) {
-	
+		Message mg = new Message();
 		String currentRank = null;
 		String currentSuit = null;
 		
-		System.out.println();
+		mg.displayEnglishMessage(2, numberOfCardsInHand);
 		
-		System.out.println("number of cards in hand is : " + 
-				numberOfCardsInHand);
-		
-		System.out.println();
-		 
 		 for ( int count = 0 ; count < numberOfCardsInHand; count++ ) {
 			 
 			currentRank = ((StandardDeck) deck).setCurrentRank(cardsInHand.
@@ -73,9 +62,7 @@ public class Hand {
 			currentSuit = ((StandardDeck) deck).setCurrentSuit(cardsInHand.
 					get(count).getSuit());
 			
-			 System.out.println("in the hand is card rank: " + 
-					currentRank + " and suit " 
-						 + currentSuit);
+			mg.displayEnglishMessage(2, currentRank, currentSuit);
 		 }
 	}
 	

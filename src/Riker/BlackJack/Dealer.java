@@ -20,7 +20,8 @@ public class Dealer extends Player {
 		this.setWallet(500);
 	}
 /**
- * 
+ * This method lets the dealer remove a card from the deck and place it in the 
+ * 	hand referenced.
  * @param hand
  * @param deck
  */

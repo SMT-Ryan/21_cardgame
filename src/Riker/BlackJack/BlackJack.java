@@ -47,30 +47,17 @@ public class BlackJack implements CardGame {
 		playerPopulation = gameSetUp(dealer, playerPopulation, players, deck);
 		
 		//collect bets from all players
-		
-		collectBets(players);
-		
-		
 		//play players hands in order 1-?
-		
-		
-		
-		//testing code
-		//System.out.println("number of players " + playerPopulation);
-		//test players list
-		//for (int i = 0; i<players.size(); i++){
-		//	System.out.println("name: " + players.get(i).getFirstName() + " " +
-		//			"bet" + players.get(i).getBetPool());
-		//}
-		
+		playHand(players, deck, dealer);
 		
 	}
 	
 	/**
 	 * sets all the non dealer players bets.
 	 * @param players
+	 * @param dealer 
 	 */
-	public void collectBets(List<Player> players) {
+	public void playHand(List<Player> players, Deck deck, Dealer dealer) {
 	
 		//int bet = 0;
 		//boolean b = true;
@@ -129,13 +116,25 @@ public class BlackJack implements CardGame {
 				}
 				//collect bets from all players
 				placeBet(i, players);
+				//give players two cards and ask if they want to hit or stay.
+				playerDeal(players.get(i).getHand() , deck);
 		}
 
 	}
 
+	
+	/**
+	 * gives the current player two cards, calls a method hit  
+	 * until player busts or stays
+	 */
+	private void playerDeal(Hand hand, Deck deck) {
+		
+		
+	}
+
 	private void placeBet(int i, List<Player> players) {
 		if(i !=0){
-			System.out.println("place bet your bet");
+			
 			players.get(i).setBetPool(Integer.parseInt(getInput()));
 		}
 	}
@@ -152,31 +151,24 @@ public class BlackJack implements CardGame {
 	 */
 private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players, 
 		Deck deck) {
+			Message em = new Message();
 			//title message
-			System.out.println("Black Jack: A work in progress by Ryan J. "
-					+ "Riker");
-			System.out.println("(c)  Copyright 2014");
-			System.out.println("");
+			em.displayEnglishMessage(1);
 			
 			//welcome message
-			System.out.println("Welcome, my name is " + dealer.getFirstName() + 
-					" "	+ dealer.getLastName() + " but my friends call me " + 
-					dealer.getPlayerAlias() +".");
-			System.out.println("I will be dealing today");
+			em.displayEnglishMessage(1, dealer);
 			
 			//start game setup.
 			//get number of players, declare and set all players.
-			System.out.println("How many of you folks are joining us today?");
+			em.displayEnglishMessage(2);
 			playerPopulation = playerPopulation + addNewPlayers(players);
 			
 			//draw cards for dealer
-			System.out.println("The Dealers Hand:");
 			for (int i = 0 ; i <2; i++){
 			dealer.drawCardToHand(dealer.getHand(), deck);
 			}		
 			
 			//display dealers cards for all
-			System.out.println("The dealer is showing a ");
 			dealer.getHand().printDealerHand(deck);
 			//end game setup
 		return playerPopulation;
