@@ -71,21 +71,20 @@ public class StandardDeck implements Deck{
  */
 	public void printDeck(){
 		
+		Message mg = new Message();
 		String currentRank = null;
 		String currentSuit = null;
 		
-		System.out.println();
-		System.out.println("the deck has :#" + readyCards.size() + 
-				" cards left.");
-		System.out.println();
+		
+		mg.displayEnglishMessage(3, readyCards.size());
 		 
 		 for ( int count = 0 ; count < readyCards.size(); count++ ) {
 
 			 currentRank = setCurrentRank(readyCards.get(count).getRank());
 			 
 			 currentSuit = setCurrentSuit(readyCards.get(count).getSuit());
-			 	 
-			 System.out.println("The " + currentRank + " of " + currentSuit);
+			 
+		mg.displayEnglishMessage(3, currentRank, currentSuit);
 		 }
 	}
 	
@@ -117,8 +116,9 @@ public class StandardDeck implements Deck{
 		activeCard = readyCards.get(0);
 		readyCards.remove(0);
 		
-		System.out.println("active card rank" + activeCard.getRank() + " and " + 
-				activeCard.getSuit());
+		//error checking
+		//System.out.println("active card rank" + activeCard.getRank() + " and " + 
+		//		activeCard.getSuit());
 		return activeCard;
 	}
 	

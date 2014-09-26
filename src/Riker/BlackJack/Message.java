@@ -54,6 +54,9 @@ public class Message {
 					dealer.getPlayerAlias() +".");
 			System.out.println("I will be dealing today");
 		break;
+		case 2:
+			
+		break;
 		default:
 		break;
 		}
@@ -80,6 +83,11 @@ public class Message {
 					value);
 			System.out.println();
 		break;
+		case 3:
+		System.out.println();
+		System.out.println("the deck has :#" + value + 
+				" cards left.");
+		System.out.println();
 		default:
 		break;
 		}
@@ -104,6 +112,9 @@ public class Message {
 		case 2:
 			 System.out.println("in the hand is card rank: " +  string1 + 
 					 " and suit " + string2);
+		break;
+		case 3:
+			 System.out.println("The " + string1 + " of " + string2);
 		break;
 		default:
 		break;
