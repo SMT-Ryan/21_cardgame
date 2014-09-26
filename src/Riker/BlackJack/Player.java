@@ -17,6 +17,7 @@ public class Player extends Person {
 	private String playerAlias = null;
 	private boolean isDealer = false;
 	private int wallet = 0;
+	private int betPool = 0;
 	private Hand hand = new Hand();
 
 	
@@ -73,6 +74,14 @@ public class Player extends Person {
 
 	public void setHand(Hand hand) {
 		this.hand = hand;
+	}
+
+	public int getBetPool() {
+		return betPool;
+	}
+
+	public void setBetPool(int betPool) {
+		this.betPool = betPool;
 	}
 
 }
