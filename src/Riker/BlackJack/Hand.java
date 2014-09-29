@@ -66,7 +66,7 @@ public class Hand {
 		 }
 	}
 	
-	
+
 	//setters and getters
 	public int getNumberOfCardsInHand() {
 		return numberOfCardsInHand;

@@ -50,9 +50,11 @@ public class BlackJack implements CardGame {
 		
 		//collect bets from all players
 		//play players hands 
+		
 		playHand(players, deck, dealer);
 		
 		//dealer draws
+		playDealerHand(players, deck, dealer);
 		
 		//check win
 		
@@ -65,6 +67,11 @@ public class BlackJack implements CardGame {
 		
 	}
 	
+	private void playDealerHand(List<Player> players, Deck deck, Dealer dealer) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/**
 	 * sets all the non dealer players bets, and executes hit or stay logic.
 	 * @param players
@@ -78,40 +85,73 @@ public class BlackJack implements CardGame {
 		for (int i = 0 ; i < players.size(); i++){
 			addressUser(i, players);
 			
-			/*
-			* collect bets from all non dealer players
-			*/
 			if (!players.get(i).isDealer()){
+				
+			/*
+			 * collects bets from all non dealer players
+			 */
 					placeBet(i, players);
-			}else{
-				//do nothing dealer
-			}
-			
+
 			/*
-			 * give non dealer players two cards and ask if they want to 
-			 * 	hit or stay
+			 * give non dealer players two cards
 			 */
-			if (!players.get(i).isDealer()){
+
 				playerDeal(players.get(i).getHand() , deck, dealer);
-			}else{
-				//do nothing dealer
-			}
-			
-			/*
-			 *assigns a value to players hand, requests hit or stay or 
-			 *issues bust 
+
+ 			/*
+			 *assigns a value to players hand
 			 */
-			if (!players.get(i).isDealer()){
-				//hit method
-				hit(players.get(i).getHand(), dealer , deck);
+
+				setHandValue(players.get(i).getHand(), dealer , deck);
+			
+			//loops while not busted
+			while (players.get(i).getHand().getValue() < 21){
+				String input = null;
+				//hit or stay message
+				mg.displayEnglishMessage(5 , players.get(i).getHand().getValue());
+				
+				//collect response from user
+				input = ms.nextLine().toUpperCase();
+				if (input.equals("H")) {
+					dealer.drawCardToHand(players.get(i).getHand(), deck);
+					setHandValue(players.get(i).getHand(), dealer, deck);
+					players.get(i).getHand().printHand(deck);	
+					mg.displayEnglishMessage(6, players.get(i).getHand().getValue());
+					//TODO bug check message remove later
+					System.out.println("hit");
+				}
+				if (input.equals("S")) {
+					//stay
+					players.get(i).getHand().printHand(deck);
+					mg.displayEnglishMessage(6, players.get(i).getHand().getValue());
+					//TODO bug check remove
+					System.out.println("stay");
+					break;
+				} 
+				///TODO remove testing message
+				System.out.println("busted");
+				players.get(i).getHand().printHand(deck);
+				mg.displayEnglishMessage(6, players.get(i).getHand().getValue());
+				
+			}
 			}else{
 				//do nothing dealer
 			}
-					
+				
 		}
+		
+		System.out.println("dealer draw up");
+			
+
+					
+		
 	}
 		
-	
+	/**
+	 * This method will be replaced with a shorter one
+	 * @param i element to select correct player
+	 * @param players list of players
+	 */
 	private void addressUser(int i, List<Player> players) {
 		Message mg = new Message();
 		if (players.get(i).isDealer()){
@@ -154,14 +194,16 @@ public class BlackJack implements CardGame {
 	/**
 	 *This Method assigns a value to players hand, requests hit or stay or 
 	 * issues bust 
-	 * @param hand
-	 * @param dealer
-	 * @param deck
+	 * @param hand the players hand
+	 * @param dealer the games dealer
+	 * @param deck a standard 52 card deck
 	 */
-	private void hit(Hand hand, Dealer dealer, Deck deck) {
+	private void setHandValue(Hand hand, Dealer dealer, Deck deck) {
 		
 		Message mg = new Message();
 
+		hand.setValue(0);
+		
 		System.out.println("this is working");
 		//assign current hand value
 		for (int i = 0; i < hand.getNumberOfCardsInHand(); i++){
@@ -169,49 +211,35 @@ public class BlackJack implements CardGame {
 			setCardValue(i, hand, mg);
 			hand.setValue(hand.getValue() + 
 					hand.getCardsInHand().get(i).getValue()) ;
-			
+
 		}
-		//testing message
-		for (int i = 0; i < hand.getNumberOfCardsInHand(); i++){
-		System.out.println("card value: " + hand.getCardsInHand().get(i).getValue());
-		}
-		System.out.println("the hands value is: " + hand.getValue());
+
 	}
 
 	/**
 	 * This method sets the card values for a hand 
 	 * @param i 
-	 * @param hand
-	 * @param mg 
+	 * @param hand is the current players hand
+	 * @param mg is the message class
 	 */
 	private void setCardValue(int i, Hand hand, Message mg) {
 
-		//checks to make sure hand value is zero
-		if (hand.getCardsInHand().get(i).getValue() == 0 ){
-			//if not a face card and not an ace rank is value
 			if(hand.getCardsInHand().get(i).getRank() <= 10 && 
 					hand.getCardsInHand().get(i).getRank() != 1){
 			 	hand.getCardsInHand().get(i).setValue
 			 		(hand.getCardsInHand().get(i).getRank());
-			 //if rank is greater than ten value is ten
-			}else if (hand.getCardsInHand().get(i).getRank() > 10){
-				hand.getCardsInHand().get(i).setValue(10);
-			//ace handling
-			}else if (hand.getCardsInHand().get(i).getRank() == 1){
-				
-				mg.displayEnglishMessage(7);
-				
-				if (!getInput().equals("1") || !getInput().equals("11")) {
-					
-					mg.displayEnglishMessage(8);
-
-				}else{
-					hand.getCardsInHand().get(i).setValue(Integer.parseInt(getInput()));
-				}
-			}else{
-				mg.displayEnglishMessage(9);
 			}
-		}
+			
+			 //if rank is greater than ten value is ten
+			if (hand.getCardsInHand().get(i).getRank() > 10){
+				hand.getCardsInHand().get(i).setValue(10);
+			}
+			
+			//ace handling
+			if (hand.getCardsInHand().get(i).getRank() == 1){
+				mg.displayEnglishMessage(7);
+				hand.getCardsInHand().get(i).setValue(11);
+			}
 		
 	}
 

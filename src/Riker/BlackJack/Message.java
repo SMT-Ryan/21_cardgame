@@ -52,21 +52,19 @@ public class Message {
 		break;
 		case 7:
 			System.out.println("Well shoot, partner. looks like you have ace");
-			System.out.println("you can choose to have an ace valued at 1 or "
-					+ "11");
-			System.out.println("but choose wisely now, once its set its locked "
-					+ "in unless I change something in this program");
-			System.out.println("enter 1 or 11 for your aces value now.");
+			System.out.println("At my table an ace is worth 11.");
 		break;
 		case 8:
-			System.out.println("sorry my friend but that wasnt 1 or 11, try "
-					+ "again");
+			System.out.println("");
 			System.out.println();
 		break;
 		case 9:
 			System.out.println("something went horribly wrong assinging cards "
 					+ "value");
 		break;
+		case 10:
+				System.out.println("I have bad news my friend, you have "
+						+ "busted.");
 		default:
 			System.out.println("something went horribly wrong in the message "
 					+ "class");
@@ -125,6 +123,14 @@ public class Message {
 		case 4:
 			System.out.println("Please, enter player " + value + 
 					"'s first name ");
+		break;
+		case 5:
+			System.out.println("your current hands total value is: " + value );
+			System.out.println("would you like to hit or stay");
+			System.out.println("please type H for hit or S for stay");
+		break;
+		case 6:
+			System.out.println("the current hands total value is: " + value );
 		break;
 		default:
 			System.out.println("something went horribly wrong in the message "
