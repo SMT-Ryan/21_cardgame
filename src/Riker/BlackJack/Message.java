@@ -71,6 +71,10 @@ public class Message {
 				System.out.println("player stays");
 				System.out.println();
 		break;
+		case 12:
+				System.out.println("Congratulations friend, you have 21");
+				System.out.println();
+		break;
 		default:
 			System.out.println("something went horribly wrong in the message "
 					+ "class");

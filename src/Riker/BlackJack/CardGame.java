@@ -18,7 +18,7 @@ public interface CardGame {
 	
 	//mandatory methods
 	public void process();
-	public void checkWin(List<Player> players);
+	public void checkWin(List<Player> players, int population);
 	public void requestShulle();
 	
 }

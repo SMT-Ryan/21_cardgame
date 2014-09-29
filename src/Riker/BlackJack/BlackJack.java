@@ -143,6 +143,11 @@ public class BlackJack implements CardGame {
 
 				setHandValue(players.get(i).getHand(), dealer , deck);
 				
+				if (players.get(i).getHand().getValue() == 21){
+					
+					mg.displayEnglishMessage(12);
+				}
+				
 				//loops while not busted
 				while (players.get(i).getHand().getValue() < 21){
 					String input = null;
@@ -150,10 +155,14 @@ public class BlackJack implements CardGame {
 					//hit or stay message
 					mg.displayEnglishMessage(5 , 
 							players.get(i).getHand().getValue());
-				
+				try{
 					//collect response from user
 					input = ms.nextLine().toUpperCase();
-				
+				}catch(NumberFormatException e){
+					//let loop repeat
+				}
+					
+					
 					//hit logic
 					if (input.equals("H")) {
 					
@@ -163,10 +172,8 @@ public class BlackJack implements CardGame {
 					
 						setHandValue(players.get(i).getHand(), dealer, deck);
 					
-						players.get(i).getHand().printHand(deck);	
-					
-						mg.displayEnglishMessage(6, 
-								players.get(i).getHand().getValue());
+					//	mg.displayEnglishMessage(6, 
+					//			players.get(i).getHand().getValue());
 					}
 				
 					//stay logic
@@ -174,17 +181,19 @@ public class BlackJack implements CardGame {
 					
 						mg.displayEnglishMessage(11);
 		
-						players.get(i).getHand().printHand(deck);
+					//	players.get(i).getHand().printHand(deck);
 					
-						mg.displayEnglishMessage(6, 
-								players.get(i).getHand().getValue());
+					//	mg.displayEnglishMessage(6, 
+					//			players.get(i).getHand().getValue());
 
 						break;
 					} 
 				
 					//player bust
+					if (players.get(i).getHand().getValue() > 21){
 					mg.displayEnglishMessage(10);
-				
+					}
+					
 					players.get(i).getHand().printHand(deck);
 					mg.displayEnglishMessage(6, 
 							players.get(i).getHand().getValue());
@@ -286,12 +295,19 @@ public class BlackJack implements CardGame {
 	/**
 	 * This method sets the user input for bet into the players betPool 
 	 * attribute
-	 * @param i
-	 * @param players
+	 * @param i the current element in the list of players
+	 * @param players  the current list of players
 	 */
 	private void placeBet(int i, List<Player> players) {
-		if(i !=0){
-			players.get(i).setBetPool(Integer.parseInt(getInput()));
+		Message mg = new Message();
+		
+		while(true){
+			try {
+				players.get(i).setBetPool(Integer.parseInt(getInput()));
+				break;
+			}catch(NumberFormatException e){
+				mg.displayEnglishMessage(3);		
+			}
 		}
 	}
 
@@ -364,7 +380,7 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 			
 				numberOfPlayers = Integer.parseInt(getInput());
 	
-			} catch (java.util.NoSuchElementException e){
+			} catch (NumberFormatException e){
 				mg.displayEnglishMessage(3);		
 			}
 		}
@@ -413,31 +429,46 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 	 * 
 	 * @Override
 	 */
-	public void checkWin(List<Player> players, int playerPopulation) {
+	public void checkWin(List<Player> players, int population) {
 		
-		for(int i = 0; i < players.size(); i++){
+		System.out.println("*******************check win start");
+		
+		
+		for(int i = 0; i <= population; i++){
 			if (!players.get(i).isDealer()) {
 		
-		//if dealer busts all non busted players get their bet + 10
-		if (players.get(0).getHand().getValue() >= 22){
-			System.out.println("dealer busted win bet+10");
-		}else{
-			//if dealer didn't bust compare values
-			//players hand is higher but not busted win bet +15
-			if(players.get(i).getHand().getValue() < 21 && 
-				players.get(i).getHand().getValue() > 
-				players.get(0).getHand().getValue()){
-				System.out.println("Dealer stayied higher values win "
-						+ "bet+15");
-			}
-			//if player has a 21 player wins their bet + 25
 
-			if ( players.get(i).getHand().getValue() == 21){
-				System.out.println("player is not the dealer and player "
+				
+				//if dealer busts all non busted players get their bet + 10
+				if (players.get(0).getHand().getValue() >= 22){
+					System.out.println("dealer busted win bet+10");
+				}else{
+					//if dealer didn't bust compare values
+					//players hand is higher but not busted win bet +15
+					if(players.get(i).getHand().getValue() < 21 && 
+							players.get(i).getHand().getValue() > 
+					players.get(0).getHand().getValue()){
+						System.out.println("both didnt bust higher values player"
+								+ " win bet+15");
+					}
+					
+					if(players.get(i).getHand().getValue() < 21 && 
+							players.get(i).getHand().getValue() < 
+					players.get(0).getHand().getValue()){
+						System.out.println("both stayied higher value dealer win "
+								+ "player loses money bet+15");
+					}
+					//if player has a 21 player wins their bet + 25
+					if ( players.get(i).getHand().getValue() == 21){
+						System.out.println("player is not the dealer and player "
 						+ "has 21");
+					} 
+					//if player bust they lose
+					if (players.get(i).getHand().getValue() > 21){
+					System.out.println("player busted lose risked money");
+					}
 				}
 			}
-		}
 		}
 	}
 
