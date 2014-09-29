@@ -64,6 +64,13 @@ public class StandardDeck implements Deck{
 		}
 	}
 
+	/**
+	 * This methods places a Card into the discard pile
+	 * @param discardedCard
+	 */
+	public void discardCard(Card discardedCard){
+		discardPile.add(discardedCard);
+	}
 	
 /**
  * A method used to print all the cards in the ready deck.  does not include 

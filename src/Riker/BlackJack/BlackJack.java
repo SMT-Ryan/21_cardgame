@@ -56,14 +56,37 @@ public class BlackJack implements CardGame {
 		checkWin(players, playerPopulation, mg);
 		
 		//discard hands set hand value to zero
+		handsToDiscard(players, (StandardDeck) deck);
 		
 		//check deck size and request shuffle or just re-shuffle at the end of
 		//each hand
+		
 		
 		//restart process at some point after players were added.
 		
 	}
 	
+	/**
+	 * This method will take all cards from all players hands and place them
+	 * into the discard pile.
+	 * @param players the list of all active players
+	 * @param deck a standard deck of 52 cards
+	 */
+	private void handsToDiscard(List<Player> players, StandardDeck deck) {
+	
+		for (int i = 0; i < players.size(); i++){
+			//TODO remove testing system out
+			
+			System.out.println(players.get(i).getPlayerPreferredName() + 
+					" cards discard");
+			for(int c = 0; c < 
+					players.get(i).getHand().getNumberOfCardsInHand(); c++){
+				deck.discardCard(players.get(i).getHand().
+						getCardsInHand().get(c));
+			}
+		}
+	}
+
 	/**
 	 * method that contains the dealer playing its hand.  
 	 * @param deck a standard deck of 52 cards
@@ -485,6 +508,9 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 		winner.setWallet(winner.getWallet() + totalPrize);
 		//winners bet pool reset to 0 state
 		winner.setBetPool(0);
+		//TODO remove testing code
+		System.out.println("the value of the current wallet is " + winner.getWallet());
+		System.out.println("the value of the dealers waller is " + dealer.getWallet());
 
 	}
 	
@@ -499,6 +525,9 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 		dealer.setWallet(dealer.getWallet() + loser.getBetPool());
 		//losers bet pool reset to zero
 		loser.setBetPool(0);
+		//TODO remove testing code
+		System.out.println("the value of the current wallet is " + loser.getWallet());
+		System.out.println("the value of the dealers waller is " + dealer.getWallet());
 		
 	}
 	
