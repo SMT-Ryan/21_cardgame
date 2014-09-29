@@ -54,7 +54,7 @@ public class BlackJack implements CardGame {
 		playHand(players, deck, dealer);
 		
 		//dealer draws
-		playDealerHand(players, deck, dealer);
+		playDealerHand(deck, dealer);
 		
 		//check win
 		
@@ -67,8 +67,46 @@ public class BlackJack implements CardGame {
 		
 	}
 	
-	private void playDealerHand(List<Player> players, Deck deck, Dealer dealer) {
-		// TODO Auto-generated method stub
+	/**
+	 * method that contains the dealer playing its hand.  
+	 * @param deck a standard deck of 52 cards
+	 * @param dealer 
+	 */
+	private void playDealerHand(Deck deck, Dealer dealer) {
+		Message mg = new Message();
+		
+		//sets dealers hands value
+		setHandValue(dealer.getHand(), dealer , deck);
+		
+		//loops while not busted
+		while (dealer.getHand().getValue() < 21){
+
+			if (dealer.getHand().getValue() <= 16) {
+				dealer.drawCardToHand(dealer.getHand(), deck);
+				setHandValue(dealer.getHand(), dealer, deck);
+				dealer.getHand().printHand(deck);	
+				mg.displayEnglishMessage(6, dealer.getHand().getValue());
+				//TODO bug check message remove later
+				System.out.println("dealer hit");
+			}
+			
+			if (dealer.getHand().getValue() >16) {
+				//stay
+				dealer.getHand().printHand(deck);
+				mg.displayEnglishMessage(6, dealer.getHand().getValue());
+				//TODO bug check remove
+				System.out.println("dealer stay");
+				break;
+			} 
+			
+			///TODO remove testing message
+			System.out.println("dealer busted");
+			dealer.getHand().printHand(deck);
+			mg.displayEnglishMessage(6, dealer.getHand().getValue());
+			
+		}
+		
+		
 		
 	}
 
