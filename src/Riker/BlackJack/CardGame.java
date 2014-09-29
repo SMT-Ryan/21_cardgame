@@ -1,5 +1,7 @@
 package Riker.BlackJack;
 
+import java.util.List;
+
 /**
  * <b>Title</B>: CardGame.java Description: Java code of a card game interface. 
  * 		A card game object Must have a process, checkWin and requestShuffle 
@@ -16,7 +18,7 @@ public interface CardGame {
 	
 	//mandatory methods
 	public void process();
-	public void checkWin();
+	public void checkWin(List<Player> players);
 	public void requestShulle();
 	
 }

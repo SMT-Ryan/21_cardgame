@@ -19,10 +19,11 @@ public class Player extends Person {
 	private int wallet = 0;
 	private int betPool = 0;
 	private Hand hand = new Hand();
+	private String playerPreferredName;
 
 	//empty constructor
 	public Player() {
-		
+		this.setPlayerPreferredName("Player");
 	}
 	
 	public void printHand(Deck deck){
@@ -68,6 +69,14 @@ public class Player extends Person {
 
 	public void setBetPool(int betPool) {
 		this.betPool = betPool;
+	}
+
+	public String getPlayerPreferredName() {
+		return playerPreferredName;
+	}
+
+	public void setPlayerPreferredName(String playerPreferredName) {
+		this.playerPreferredName = playerPreferredName;
 	}
 
 }

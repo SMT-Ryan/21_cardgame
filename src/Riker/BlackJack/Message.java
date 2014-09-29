@@ -55,7 +55,7 @@ public class Message {
 			System.out.println("At my table an ace is worth 11.");
 		break;
 		case 8:
-			System.out.println("");
+			System.out.println("Player hits");
 			System.out.println();
 		break;
 		case 9:
@@ -65,6 +65,12 @@ public class Message {
 		case 10:
 				System.out.println("I have bad news my friend, you have "
 						+ "busted.");
+				System.out.println();
+		break;
+		case 11:
+				System.out.println("player stays");
+				System.out.println();
+		break;
 		default:
 			System.out.println("something went horribly wrong in the message "
 					+ "class");
@@ -109,13 +115,11 @@ public class Message {
 			System.out.println("The dealers first card is FACE DOWN.");
 		break;
 		case 2:
-			System.out.println();
 			System.out.println("number of cards in this hand is : " + 
 					value);
 			System.out.println();
 		break;
 		case 3:
-		System.out.println();
 		System.out.println("the deck has :#" + value + 
 				" cards left.");
 		System.out.println();
@@ -128,9 +132,11 @@ public class Message {
 			System.out.println("your current hands total value is: " + value );
 			System.out.println("would you like to hit or stay");
 			System.out.println("please type H for hit or S for stay");
+			System.out.println();
 		break;
 		case 6:
 			System.out.println("the current hands total value is: " + value );
+			System.out.println();
 		break;
 		default:
 			System.out.println("something went horribly wrong in the message "
@@ -210,6 +216,19 @@ public class Message {
 			System.out.println(string + " please enter the amount you wish to "
 					+ "risk.");
 		break;
+		case 2:
+			System.out.println("It looks like " + string + " has a hand value of "
+					+ value );
+			System.out.println("dealer takes a card");
+			System.out.println();
+		break;
+		case 3:
+			System.out.println("It looks like " + string + " has a hand value of "
+					+ value );
+			System.out.println("dealer stays");
+			System.out.println();
+		break;
+		
 		default:
 			System.out.println("something went horribly wrong in the message "
 					+ "class");

@@ -39,24 +39,19 @@ public class BlackJack implements CardGame {
 		
 		//declares a dealer, and sets its variables
 		Dealer dealer = new Dealer();
-		loadDealer(dealer);
-
-		players.add(dealer);
-
-		playerPopulation++;
+		loadDealer(players, dealer, playerPopulation);
 		
 		//calls game set up
 		playerPopulation = gameSetUp(dealer, playerPopulation, players, deck);
 		
-		//collect bets from all players
-		//play players hands 
-		
+		//collects bets and plays non dealer player's hand 
 		playHand(players, deck, dealer);
 		
-		//dealer draws
+		//plays the dealers hand
 		playDealerHand(deck, dealer);
 		
 		//check win
+		checkWin(players, playerPopulation);
 		
 		//move funds
 		
@@ -64,6 +59,8 @@ public class BlackJack implements CardGame {
 		
 		//check deck size and request shuffle or just re-shuffle at the end of
 		//each hand
+		
+		//restart process at some point after players were added.
 		
 	}
 	
@@ -78,31 +75,39 @@ public class BlackJack implements CardGame {
 		//sets dealers hands value
 		setHandValue(dealer.getHand(), dealer , deck);
 		
+		dealer.printHand(deck);
+		
 		//loops while not busted
 		while (dealer.getHand().getValue() < 21){
+			
 
-			if (dealer.getHand().getValue() <= 16) {
+			if (dealer.getHand().getValue() <= 15) {
+				
+				mg.displayEnglishMessage(2, dealer.getHand().getValue(), 
+						dealer.getPlayerAlias());
+
 				dealer.drawCardToHand(dealer.getHand(), deck);
 				setHandValue(dealer.getHand(), dealer, deck);
 				dealer.getHand().printHand(deck);	
 				mg.displayEnglishMessage(6, dealer.getHand().getValue());
-				//TODO bug check message remove later
-				System.out.println("dealer hit");
-			}
-			
-			if (dealer.getHand().getValue() >16) {
-				//stay
+
+			}else if (dealer.getHand().getValue() >16) {
+				
+				mg.displayEnglishMessage(3, dealer.getHand().getValue(), 
+						dealer.getPlayerAlias());
+				
 				dealer.getHand().printHand(deck);
 				mg.displayEnglishMessage(6, dealer.getHand().getValue());
-				//TODO bug check remove
-				System.out.println("dealer stay");
 				break;
 			} 
 			
+			if (dealer.getHand().getValue() == 21) {
 			///TODO remove testing message
-			System.out.println("dealer busted");
+			System.out.println("dealer 21");
 			dealer.getHand().printHand(deck);
 			mg.displayEnglishMessage(6, dealer.getHand().getValue());
+			break;
+			}
 			
 		}
 		
@@ -121,68 +126,72 @@ public class BlackJack implements CardGame {
 		mg.displayEnglishMessage(4);
 		
 		for (int i = 0 ; i < players.size(); i++){
+			
 			addressUser(i, players);
 			
 			if (!players.get(i).isDealer()){
 				
-			/*
-			 * collects bets from all non dealer players
-			 */
-					placeBet(i, players);
+			 	// collects bets from all non dealer players
 
-			/*
-			 * give non dealer players two cards
-			 */
+				placeBet(i, players);
 
+				//give non dealer players two cards
+			 	
 				playerDeal(players.get(i).getHand() , deck, dealer);
 
- 			/*
-			 *assigns a value to players hand
-			 */
+				//assigns a value to players hand
 
 				setHandValue(players.get(i).getHand(), dealer , deck);
-			
-			//loops while not busted
-			while (players.get(i).getHand().getValue() < 21){
-				String input = null;
-				//hit or stay message
-				mg.displayEnglishMessage(5 , players.get(i).getHand().getValue());
 				
-				//collect response from user
-				input = ms.nextLine().toUpperCase();
-				if (input.equals("H")) {
-					dealer.drawCardToHand(players.get(i).getHand(), deck);
-					setHandValue(players.get(i).getHand(), dealer, deck);
-					players.get(i).getHand().printHand(deck);	
-					mg.displayEnglishMessage(6, players.get(i).getHand().getValue());
-					//TODO bug check message remove later
-					System.out.println("hit");
-				}
-				if (input.equals("S")) {
-					//stay
-					players.get(i).getHand().printHand(deck);
-					mg.displayEnglishMessage(6, players.get(i).getHand().getValue());
-					//TODO bug check remove
-					System.out.println("stay");
-					break;
-				} 
-				///TODO remove testing message
-				System.out.println("busted");
-				players.get(i).getHand().printHand(deck);
-				mg.displayEnglishMessage(6, players.get(i).getHand().getValue());
+				//loops while not busted
+				while (players.get(i).getHand().getValue() < 21){
+					String input = null;
 				
-			}
-			}else{
-				//do nothing dealer
-			}
+					//hit or stay message
+					mg.displayEnglishMessage(5 , 
+							players.get(i).getHand().getValue());
 				
-		}
-		
-		System.out.println("dealer draw up");
-			
-
+					//collect response from user
+					input = ms.nextLine().toUpperCase();
+				
+					//hit logic
+					if (input.equals("H")) {
 					
+						mg.displayEnglishMessage(8);
+						
+						dealer.drawCardToHand(players.get(i).getHand(), deck);
+					
+						setHandValue(players.get(i).getHand(), dealer, deck);
+					
+						players.get(i).getHand().printHand(deck);	
+					
+						mg.displayEnglishMessage(6, 
+								players.get(i).getHand().getValue());
+					}
+				
+					//stay logic
+					if (input.equals("S")) {
+					
+						mg.displayEnglishMessage(11);
 		
+						players.get(i).getHand().printHand(deck);
+					
+						mg.displayEnglishMessage(6, 
+								players.get(i).getHand().getValue());
+
+						break;
+					} 
+				
+					//player bust
+					mg.displayEnglishMessage(10);
+				
+					players.get(i).getHand().printHand(deck);
+					mg.displayEnglishMessage(6, 
+							players.get(i).getHand().getValue());
+				
+				}
+			}	
+		}
 	}
 		
 	/**
@@ -192,41 +201,21 @@ public class BlackJack implements CardGame {
 	 */
 	private void addressUser(int i, List<Player> players) {
 		Message mg = new Message();
-		if (players.get(i).isDealer()){
-			//skips over the dealer-player due to them not betting
-		}else if (players.get(i).getFirstName().equals("") && 
-					players.get(i).getPlayerAlias().equals("")){
+		if (!players.get(i).isDealer()){
+			if(players.get(i).getPlayerPreferredName().equals("Player")) {
 				/*
 				 * address user by player number
 				 */
 				mg.displayEnglishMessage(1, i, 
 						players.get(i).getWallet());
-		}else if(players.get(i).getFirstName().equals("")  &&
-					!players.get(i).getPlayerAlias().equals("") ){
+			}else {
 				/*
-				 * address user by nickname
+				 * address user by preferred name
 				 */
 				mg.displayEnglishMessage(1, players.get(i).getWallet(), 
-						players.get(i).getPlayerAlias());
-		}else if (players.get(i).getPlayerAlias().equals("")  && 
-					!players.get(i).getFirstName().equals("") ){
-				/*
-				 * address user by first name
-				 */
-				mg.displayEnglishMessage(1, players.get(i).getWallet(), 
-						players.get(i).getFirstName());
-		}else if (!players.get(i).getPlayerAlias().equals("")  && 
-					!players.get(i).getFirstName().equals("")){
-			/*
-			 * address user by nickname
-			 */
-			mg.displayEnglishMessage(1, players.get(i).getWallet(), 
-					players.get(i).getPlayerAlias());
-		}else{					
-			//error
-				mg.displayEnglishMessage(5);
+						players.get(i).getPlayerPreferredName());
+			}
 		}
-		
 	}
 
 	/**
@@ -241,8 +230,7 @@ public class BlackJack implements CardGame {
 		Message mg = new Message();
 
 		hand.setValue(0);
-		
-		System.out.println("this is working");
+
 		//assign current hand value
 		for (int i = 0; i < hand.getNumberOfCardsInHand(); i++){
 			
@@ -344,15 +332,21 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 
 /**
  * This method inputs hard coded data in the dealer object.
+ * @param players 
  * @param dealer
+ * @param playerPopulation 
  */
-	private void loadDealer(Dealer dealer) {
+	private void loadDealer(List<Player> players, Dealer dealer, 
+			int playerPopulation) {
 		dealer.setAge(34);
 		dealer.setFirstName("Baron_Duke");
 		dealer.setLastName("Ferdinand");
 		dealer.setPersonalID(1138);
 		dealer.setDealer(true);
-		dealer.setPlayerAlias("The Baron");		
+		dealer.setPlayerAlias("The Baron");	
+	
+		players.add(dealer);
+		playerPopulation++;
 	}
 
 	/**
@@ -376,10 +370,12 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 		}
 		
 		/*
-		 * This method generates the new players by user input
+		 * This code generates the new players by user input
 		 */
 		for (int count = 0; count < numberOfPlayers; count++ ){
 			if (count != 1138){
+				String fn = null;
+				String an = null;
 				
 				Player newPlayer = new Player();
 				
@@ -388,28 +384,61 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 				newPlayer.setDealer(false);
 		
 				mg.displayEnglishMessage(4, (count+1));
-		
-				newPlayer.setFirstName(getInput());
+				fn = getInput();
+				newPlayer.setFirstName(fn);
+				
+				if (!fn.equals("") && !fn.equals(null)){
+				newPlayer.setPlayerPreferredName(fn);
+				}
 				
 				mg.displayEnglishMessage(6);
-
-
-				newPlayer.setPlayerAlias(getInput());
-				player.add(newPlayer);
+				an = getInput();
+				newPlayer.setPlayerAlias(an);
 				
-				//TODO make a preferred name in player class if both are blank 
-				//set name to player [count]
-			
+				if (!an.equals("") && !an.equals(null)){
+				newPlayer.setPlayerPreferredName(an);
+				}
+				
+				player.add(newPlayer);
+						
 			}
 		}
 
 		return numberOfPlayers;
 	}
 
-	@Override
-	public void checkWin() {
-		// TODO Auto-generated method stub
+	/**
+	 * Checks for player win conditions, uses a separate method to move funds
+	 * @param playerPopulation 
+	 * 
+	 * @Override
+	 */
+	public void checkWin(List<Player> players, int playerPopulation) {
 		
+		for(int i = 0; i < players.size(); i++){
+			if (!players.get(i).isDealer()) {
+		
+		//if dealer busts all non busted players get their bet + 10
+		if (players.get(0).getHand().getValue() >= 22){
+			System.out.println("dealer busted win bet+10");
+		}else{
+			//if dealer didn't bust compare values
+			//players hand is higher but not busted win bet +15
+			if(players.get(i).getHand().getValue() < 21 && 
+				players.get(i).getHand().getValue() > 
+				players.get(0).getHand().getValue()){
+				System.out.println("Dealer stayied higher values win "
+						+ "bet+15");
+			}
+			//if player has a 21 player wins their bet + 25
+
+			if ( players.get(i).getHand().getValue() == 21){
+				System.out.println("player is not the dealer and player "
+						+ "has 21");
+				}
+			}
+		}
+		}
 	}
 
 	@Override
