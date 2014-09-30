@@ -381,11 +381,11 @@ public class BlackJack implements CardGame {
 		while(true){
 			try {
 				int bet = Integer.parseInt(getInput());
-				if (players.get(i).getWallet() >  bet) {
-				//set input to bet pool
-				players.get(i).setBetPool(bet);
-				//remove funds from wallet
-				players.get(i).setWallet(players.get(i).getWallet() - 
+				if (players.get(i).getWallet() >=  bet) {
+					//set input to bet pool
+					players.get(i).setBetPool(bet);
+					//remove funds from wallet
+					players.get(i).setWallet(players.get(i).getWallet() - 
 						players.get(i).getBetPool());
 				break;
 				}else{
