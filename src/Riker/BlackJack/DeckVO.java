@@ -15,12 +15,12 @@ import java.util.List;
  * last update: never
  */
 
-public interface Deck {
+public interface DeckVO {
 	
 	//mandatory methods
-public Deck shuffle(Deck deck);
+public DeckVO shuffle(DeckVO deck);
 public void reload();
-public List<Card> getReadyCards();
+public List<CardVO> getReadyCards();
 
 
 

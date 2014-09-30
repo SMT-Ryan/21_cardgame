@@ -12,19 +12,19 @@ package Riker.BlackJack;
  * last update: never
  */
 
-public class Card {
+public class CardVO {
 
 	private int rank = 0;
 	private int suit = 0;
 	private int value = 0;
 	
 	//empty constructor
-	public Card() {
+	public CardVO() {
 		
 	}
 
 	//complete constructor
-	public Card(int rank, int suit) {
+	public CardVO(int rank, int suit) {
 		this.rank = rank;
 		this.suit = suit;
 	}

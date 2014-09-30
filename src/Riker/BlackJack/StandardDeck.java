@@ -22,7 +22,7 @@ import java.util.List;
  * last update: never
  */
 
-public class StandardDeck implements Deck{
+public class StandardDeck implements DeckVO{
 
 	/*
 	 * Constant values for suits
@@ -50,8 +50,8 @@ public class StandardDeck implements Deck{
     public final static int QUEEN = 12;
     public final static int KING = 13;
     
-    List<Card> readyCards = new ArrayList<>(52);
-    List<Card> discardPile = new ArrayList<>(52);
+    List<CardVO> readyCards = new ArrayList<>(52);
+    List<CardVO> discardPile = new ArrayList<>(52);
 
 	
 	//constructor
@@ -59,7 +59,7 @@ public class StandardDeck implements Deck{
 		
 		for(int suitCount = 1; suitCount <= SPADES; suitCount++){
 			for(int count = 1; count <= KING; count++ ){
-				readyCards.add(new Card(count , suitCount));
+				readyCards.add(new CardVO(count , suitCount));
 			}
 		}
 	}
@@ -68,7 +68,7 @@ public class StandardDeck implements Deck{
 	 * This methods places a Card into the discard pile
 	 * @param discardedCard
 	 */
-	public void discardCard(Card discardedCard){
+	public void discardCard(CardVO discardedCard){
 		discardPile.add(discardedCard);
 	}
 	
@@ -100,7 +100,7 @@ public class StandardDeck implements Deck{
 	 * 	@Override
 	 * 	@return the list of cards after being shuffled.
 	 */
-	public Deck shuffle(Deck deck) {
+	public DeckVO shuffle(DeckVO deck) {
 		
 		Collections.shuffle(deck.getReadyCards());
 		return deck;
@@ -109,7 +109,7 @@ public class StandardDeck implements Deck{
 	/**
 	 * method that returns the list of cards in a deck.
 	 */
-	public List<Card> getReadyCards(){
+	public List<CardVO> getReadyCards(){
 		return readyCards;
 	}
 	
@@ -117,8 +117,8 @@ public class StandardDeck implements Deck{
 	 * returns the card at the top of the array.
 	 * @return activeCard
 	 */
-	public Card getCard(){
-		Card activeCard = new Card();
+	public CardVO getCard(){
+		CardVO activeCard = new CardVO();
 		
 		activeCard = readyCards.get(0);
 		readyCards.remove(0);

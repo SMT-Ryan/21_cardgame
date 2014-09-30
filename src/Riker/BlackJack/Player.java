@@ -12,7 +12,7 @@ package Riker.BlackJack;
 * @since 09/23/2014 
 * last update: never
  */
-public class Player extends Person {
+public class Player extends PersonVO {
 
 	private String playerAlias = null;
 	private boolean isDealer = false;
@@ -26,7 +26,7 @@ public class Player extends Person {
 		this.setPlayerPreferredName("Player");
 	}
 	
-	public void printHand(Deck deck){
+	public void printHand(DeckVO deck){
 		hand.printHand(deck);
 	}
 

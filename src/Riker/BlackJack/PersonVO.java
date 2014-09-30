@@ -13,7 +13,7 @@ package Riker.BlackJack;
  * last update: never
  */
 
-public class Person {
+public class PersonVO {
 
 	private String firstName = null;
 	private String lastName = null;
@@ -23,7 +23,7 @@ public class Person {
 	
 	
 		//Empty constructor
-	public Person() {
+	public PersonVO() {
 		
 	}
 

@@ -18,7 +18,7 @@ public class Hand {
 	
 	private int numberOfCardsInHand = 0;
 	private int value = 0;
-	private List<Card> cardsInHand = new ArrayList<>(10);
+	private List<CardVO> cardsInHand = new ArrayList<>(10);
 	
 	//empty constructor
 	public Hand() {
@@ -26,7 +26,7 @@ public class Hand {
 	}
 
 
-	public void printDealerHand(Deck deck){
+	public void printDealerHand(DeckVO deck){
 		Message mg = new Message();
 		String currentRank = null;
 		String currentSuit = null;
@@ -48,7 +48,7 @@ public class Hand {
 		
 	}
 	
-	public void printHand(Deck deck) {
+	public void printHand(DeckVO deck) {
 		Message mg = new Message();
 		String currentRank = null;
 		String currentSuit = null;
@@ -84,15 +84,15 @@ public class Hand {
 		this.value = value;
 	}
 
-	public List<Card> getCardsInHand() {
+	public List<CardVO> getCardsInHand() {
 		return cardsInHand;
 	}
 
-	public void setCardsInHand(List<Card> cardsInHand) {
+	public void setCardsInHand(List<CardVO> cardsInHand) {
 		this.cardsInHand = cardsInHand;
 	}
 	
-	public void addCardToHand(Card newCard) {
+	public void addCardToHand(CardVO newCard) {
 		cardsInHand.add(newCard);
 		numberOfCardsInHand++;
 		value = value + newCard.getValue();

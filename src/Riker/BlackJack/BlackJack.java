@@ -35,7 +35,7 @@ public class BlackJack implements CardGame {
 		
 		
 		//declares a deck followed by shuffling the deck
-		Deck deck = new StandardDeck();
+		DeckVO deck = new StandardDeck();
 		deck = deck.shuffle(deck);
 		
 		//declares a dealer, and sets its variables
@@ -91,7 +91,7 @@ public class BlackJack implements CardGame {
 	 * @param deck a standard deck of 52 cards
 	 * @param dealer 
 	 */
-	private void playDealerHand(Deck deck, Dealer dealer, Message mg) {
+	private void playDealerHand(DeckVO deck, Dealer dealer, Message mg) {
 		
 		//sets dealers hands value
 		setHandValue(dealer.getHand(), dealer , deck);
@@ -138,7 +138,7 @@ public class BlackJack implements CardGame {
 	 * @param players
 	 * @param dealer 
 	 */
-	public void playHand(List<Player> players, Deck deck, Dealer dealer,
+	public void playHand(List<Player> players, DeckVO deck, Dealer dealer,
 			Message mg) {
 		
 		mg.displayEnglishMessage(4);
@@ -170,7 +170,7 @@ public class BlackJack implements CardGame {
 	 * @param deck	a standard deck of 52 cards
 	 * @param mg the message handling class
 	 */
-	private void requestHitStay(Player activePlayer, Dealer dealer, Deck deck,
+	private void requestHitStay(Player activePlayer, Dealer dealer, DeckVO deck,
 			Message mg) {
 		if (activePlayer.getHand().getValue() == 21){
 			
@@ -249,7 +249,7 @@ public class BlackJack implements CardGame {
 	 * @param dealer the games dealer
 	 * @param deck a standard 52 card deck
 	 */
-	private void setHandValue(Hand hand, Dealer dealer, Deck deck) {
+	private void setHandValue(Hand hand, Dealer dealer, DeckVO deck) {
 		
 		Message mg = new Message();
 
@@ -298,7 +298,7 @@ public class BlackJack implements CardGame {
 	 * until player busts or stays
 	 * @param dealer 
 	 */
-	private void playerDeal(Hand hand, Deck deck, Dealer dealer) {
+	private void playerDeal(Hand hand, DeckVO deck, Dealer dealer) {
 		for (int i = 0 ; i <2; i++){
 		dealer.drawCardToHand(hand, deck);
 		}
@@ -341,7 +341,7 @@ public class BlackJack implements CardGame {
 	 * @return
 	 */
 private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players, 
-		Deck deck, Message mg) {
+		DeckVO deck, Message mg) {
 	
 			//title message
 			mg.displayEnglishMessage(1);
