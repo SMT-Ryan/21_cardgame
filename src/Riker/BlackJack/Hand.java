@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-* <b>Title</B>: Player.java Description: Java Code for a hand of cards Object.  
+* <b>Title</B>: Hand.java Description: Java Code for a hand of cards Object.  
 * 
 * Copyright: Copyright (c) 2014 Company: Silicon Mountain Technologies
 *
@@ -25,11 +25,15 @@ public class Hand {
 		
 	}
 
-
+/**
+ * This method will print the content of the current hand, while hiding the 
+ * first card face down.
+ * @param deck a standard deck of 52 cards
+ */
 	public void printDealerHand(DeckVO deck){
 		Message mg = new Message();
-		//String currentRank = null;
-		//String currentSuit = null;
+		String currentRank = null;
+		String currentSuit = null;
 		
 		System.out.println();
 		
@@ -37,19 +41,21 @@ public class Hand {
 
 		 for ( int count = 1 ; count < numberOfCardsInHand; count++ ) {
 			 
-			 cardsInHand.get(count).toString();
-	/*		 TODO where we are working
 			currentRank = ((StandardDeck) deck).setCurrentRank(cardsInHand.
 						get(count).getRank());
 			currentSuit = ((StandardDeck) deck).setCurrentSuit(cardsInHand.
 					get(count).getSuit());
 			
 		mg.displayMessage(1, currentRank, currentSuit);
-*/
+
 		 }
 		
 	}
-	
+	/**
+	 * This method will print the content of the current hand to display, 
+	 * 	showing all cards
+	 * @param deck a standard deck of 52
+	 */
 	public void printHand(DeckVO deck) {
 		Message mg = new Message();
 		String currentRank = null;

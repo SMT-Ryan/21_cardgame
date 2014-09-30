@@ -46,7 +46,6 @@ public class StandardDeck implements DeckVO{
     public final static int NINE = 9;
     public final static int TEN = 10;
     public final static int JACK = 11;
-    public final static int HIGH_ACE = 11;    
     public final static int QUEEN = 12;
     public final static int KING = 13;
     

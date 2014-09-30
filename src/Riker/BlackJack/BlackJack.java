@@ -23,7 +23,6 @@ public class BlackJack implements CardGame {
 		BlackJack blackJack = new BlackJack();
 		blackJack.process();
 		
-		
 	}
 
 	/**
@@ -70,8 +69,8 @@ public class BlackJack implements CardGame {
 		
 	}
 	/**
-	 * Over rides the original process, when there is no need to re-make the deck
-	 * 	or players.
+	 * Over rides the original process, when there is no need to re-make the 
+	 * deck	or players.
 	 * @param players
 	 * @param deck
 	 */
@@ -108,7 +107,7 @@ public class BlackJack implements CardGame {
 	 */
 	private void dealerSetup(Dealer dealer, DeckVO deck) {
 		for (int i = 0 ; i <2; i++){
-		dealer.drawCardToHand(dealer.getHand(), deck);
+			dealer.drawCardToHand(dealer.getHand(), deck);
 		}
 		
 	}
@@ -139,7 +138,6 @@ public class BlackJack implements CardGame {
 			}catch(NumberFormatException e){
 				
 			}
-				
 		}
 	}
 
@@ -153,8 +151,8 @@ public class BlackJack implements CardGame {
 	
 		for (int i = 0; i < players.size(); i++){
 			//copies cards to discard pile
-			for(int c = 0; c < 
-					players.get(i).getHand().getNumberOfCardsInHand(); c++){
+			for(int c = 0; c < players.get(i).getHand()
+					.getNumberOfCardsInHand(); c++){
 				
 				deck.discardCard(players.get(i).getHand().
 						getCardsInHand().get(c));
@@ -199,17 +197,12 @@ public class BlackJack implements CardGame {
 				mg.displayMessage(6, dealer.getHand().getValue());
 				break;
 			} 
-			
 			if (dealer.getHand().getValue() == 21) {
 			dealer.getHand().printHand(deck);
 			mg.displayMessage(6, dealer.getHand().getValue());
 			break;
 			}
-			
 		}
-		
-		
-		
 	}
 
 	/**
@@ -282,7 +275,7 @@ public class BlackJack implements CardGame {
 		}
 			//player bust
 			if (activePlayer.getHand().getValue() > 21){
-			mg.displayMessage(10);
+				mg.displayMessage(10);
 			}
 			
 			activePlayer.getHand().printHand(deck);
@@ -303,14 +296,12 @@ public class BlackJack implements CardGame {
 		if (!players.get(i).isDealer()){
 			if(players.get(i).getPlayerPreferredName().equals("Player")) {
 				
-				 //address user by player number
-				 
+				//address user by player number
 				mg.displayMessage(1, i, 
 						players.get(i).getWallet());
 			}else {
 				
-				 //address user by preferred name
-				 
+				//address user by preferred name
 				mg.displayMessage(1, players.get(i).getWallet(), 
 						players.get(i).getPlayerPreferredName());
 			}
@@ -365,7 +356,6 @@ public class BlackJack implements CardGame {
 				mg.displayMessage(7);
 				hand.getCardsInHand().get(i).setValue(11);
 			}
-		
 	}
 
 	/**
@@ -378,8 +368,6 @@ public class BlackJack implements CardGame {
 		dealer.drawCardToHand(hand, deck);
 		}
 		hand.printHand(deck);
-		
-		
 	}
 
 	/**
@@ -474,9 +462,7 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 		
 		while(numberOfPlayers == 0){
 			try{
-			
 				numberOfPlayers = Integer.parseInt(getInput());
-	
 			} catch (NumberFormatException e){
 				mg.displayMessage(3);		
 			}
@@ -501,7 +487,7 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 				newPlayer.setFirstName(fn);
 				
 				if (!fn.equals("") && !fn.equals(null)){
-				newPlayer.setPlayerPreferredName(fn);
+					newPlayer.setPlayerPreferredName(fn);
 				}
 				
 				mg.displayMessage(6);
@@ -509,14 +495,12 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 				newPlayer.setPlayerAlias(an);
 				
 				if (!an.equals("") && !an.equals(null)){
-				newPlayer.setPlayerPreferredName(an);
+					newPlayer.setPlayerPreferredName(an);
 				}
 				
-				player.add(newPlayer);
-						
+				player.add(newPlayer);	
 			}
 		}
-
 		return numberOfPlayers;
 	}
 
@@ -538,16 +522,17 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 				}else{
 					//if dealer didn't bust compare values
 					//players hand is higher but not busted win bet +15
-					if(players.get(i).getHand().getValue() < 21 && 
-							players.get(i).getHand().getValue() > 
-							players.get(0).getHand().getValue()){
+					if(players.get(i).getHand().getValue() < 21 && players
+						.get(i).getHand().getValue() > 	players.get(0).getHand()
+						.getValue()){
+						
 						mg.displayMessage(14);
 						playerWin(players.get(i), players.get(0), 15);
 					}
 					//dealer hand is higher player loses bet pool
-					if(players.get(i).getHand().getValue() < 21 && 
-							players.get(i).getHand().getValue() < 
-							players.get(0).getHand().getValue()){
+					if(players.get(i).getHand().getValue() < 21 && 	players
+						.get(i).getHand().getValue() < players.get(0).getHand()
+						.getValue()){
 						mg.displayMessage(15);
 						playerLose(players.get(i), players.get(0));
 					}
