@@ -1,4 +1,4 @@
-package Riker.BlackJack;
+package com.riker.blackjack;
 
 /**
  * <b>Title</B>: Dealer.java Description: Java code of a dealer. A dealer object

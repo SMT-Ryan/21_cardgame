@@ -1,4 +1,4 @@
-package Riker.BlackJack;
+package com.riker.blackjack;
 
 /**
 * <b>Title</B>: Message.java Description: Java Code for an object that displays

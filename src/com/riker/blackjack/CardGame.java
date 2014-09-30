@@ -1,4 +1,4 @@
-package Riker.BlackJack;
+package com.riker.blackjack;
 
 import java.util.List;
 

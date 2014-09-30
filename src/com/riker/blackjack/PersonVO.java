@@ -1,4 +1,4 @@
-package Riker.BlackJack;
+package com.riker.blackjack;
 
 /**
  * <b>Title</B>: PersonVO.java Description: Java code of a person. A person object
