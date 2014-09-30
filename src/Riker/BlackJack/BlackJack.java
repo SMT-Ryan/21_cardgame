@@ -66,18 +66,26 @@ public class BlackJack implements CardGame {
 		
 	}
 	/**
-	 * 
-	 * @param mg
+	 * This method will let the users decide to run the game again.
+	 * @param mg instance of the message class.
 	 */
 	private void requestContinue(Message mg) {
 		String input = null;
 		while(true){
-			mg.displayEnglishMessage(Message.CONTINUE_MESSAGE);
-			input = ms.nextLine().toUpperCase();
-			if (input.equals("Y")){
-				this.process();
-			}else{
-					
+			try {
+				mg.displayEnglishMessage(Message.CONTINUE_MESSAGE);
+				input = ms.nextLine().toUpperCase();
+				if (input.equals("Y")){
+					this.process();
+					break;
+				}else if (input.equals("N")){
+					mg.displayEnglishMessage(Message.THANKYOU);
+					break;
+				}else{
+					mg.displayEnglishMessage(Message.INCORRECT_INPUT);
+				}
+			}catch(NumberFormatException e){
+				
 			}
 				
 		}

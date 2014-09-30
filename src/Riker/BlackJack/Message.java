@@ -15,6 +15,7 @@ package Riker.BlackJack;
 public class Message {
 	public final static int CONTINUE_MESSAGE = 18;
 	public final static int THANKYOU = 19;
+	public final static int INCORRECT_INPUT = 20;
 	
 	//empty constructor
 	public Message() {
@@ -86,13 +87,13 @@ public class Message {
 			System.out.println();
 		break;
 		case 14:
-			System.out.println("Player wins by being closer to 21 and not busting"
-					+ " 15 bonus funds rewarded");
+			System.out.println("Player wins by being closer to 21 and not "
+					+ "busting 15 bonus funds rewarded");
 			System.out.println();
 		break;
 		case 15:
-			System.out.println("dealer wins by being closer to 21 and not busting"
-					+ " player loses the betting pool.");
+			System.out.println("dealer wins by being closer to 21 and not "
+					+ "busting player loses the betting pool.");
 			System.out.println();
 		break;
 		case 16:
@@ -106,12 +107,17 @@ public class Message {
 		break;
 		case 18:
 			System.out.println("Would you folks like to play an other hand "
-					+ "o' black jack/nenter Y for yes and N for no.");
+					+ "o' black jack \n enter Y for yes and N for no.");
 			System.out.println();
 		break;
 		case 19:
-			System.out.println("Well, shoot folks, I am sorry to see you go./n"
+			System.out.println("Well, shoot folks, I am sorry to see you go. \n "
 					+ "but thanks for playing with us.");
+			System.out.println();
+		break;
+		case 20:
+			System.out.println("I am sorry friend, but that was incorrect "
+					+ "input \n Please try again!");
 			System.out.println();
 		break;
 		default:
