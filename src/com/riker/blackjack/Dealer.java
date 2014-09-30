@@ -12,6 +12,7 @@ package com.riker.blackjack;
  * last update: never
  */
 
+
 public class Dealer extends Player {
 	//empty constructor
 	public Dealer() {
