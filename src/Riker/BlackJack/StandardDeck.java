@@ -131,10 +131,13 @@ public class StandardDeck implements DeckVO{
 	
 	/**
 	 * reloads the discarded cards to the deck
+	 * @param i 
 	 * @Override
 	 */
 	public void reload() {
-		// TODO Auto-generated method stub
+		 for ( int i = 0 ; i < discardPile.size(); i++ ) {
+			 readyCards.add(discardPile.get(i));
+		 }
 		
 	}
 	

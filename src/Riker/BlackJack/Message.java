@@ -13,17 +13,22 @@ package Riker.BlackJack;
  */
 
 public class Message {
+	public final static int CONTINUE_MESSAGE = 18;
+	public final static int THANKYOU = 19;
 	
 	//empty constructor
 	public Message() {
 		
 	}
 
+	
+	
 /**
  * This method displays the standard English messages
  * @param m
  */
 	public void displayEnglishMessage(int m) {
+		
 		switch (m){
 		case 1:
 		System.out.println("Black Jack: A work in progress by Ryan J. "
@@ -97,6 +102,16 @@ public class Message {
 		break;
 		case 17:
 			System.out.println("Player has busted and loses the betting pool");
+			System.out.println();
+		break;
+		case 18:
+			System.out.println("Would you folks like to play an other hand "
+					+ "o' black jack/nenter Y for yes and N for no.");
+			System.out.println();
+		break;
+		case 19:
+			System.out.println("Well, shoot folks, I am sorry to see you go./n"
+					+ "but thanks for playing with us.");
 			System.out.println();
 		break;
 		default:

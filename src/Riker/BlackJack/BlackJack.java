@@ -58,14 +58,31 @@ public class BlackJack implements CardGame {
 		//discard hands set hand value to zero
 		handsToDiscard(players, (StandardDeck) deck);
 		
-		//check deck size and request shuffle or just re-shuffle at the end of
-		//each hand
+		//check deck size and request shuffle
+		requestShuffle(deck);
 		
-		
-		//restart process at some point after players were added.
+		//restart process at continue some point after players were added.
+		requestContinue(mg);
 		
 	}
-	
+	/**
+	 * 
+	 * @param mg
+	 */
+	private void requestContinue(Message mg) {
+		String input = null;
+		while(true){
+			mg.displayEnglishMessage(Message.CONTINUE_MESSAGE);
+			input = ms.nextLine().toUpperCase();
+			if (input.equals("Y")){
+				this.process();
+			}else{
+					
+			}
+				
+		}
+	}
+
 	/**
 	 * This method will take all cards from all players hands and place them
 	 * into the discard pile.
@@ -75,9 +92,6 @@ public class BlackJack implements CardGame {
 	private void handsToDiscard(List<Player> players, StandardDeck deck) {
 	
 		for (int i = 0; i < players.size(); i++){
-			//TODO remove testing system out
-			System.out.println(players.get(i).getPlayerPreferredName() + 
-					" cards discard");
 			for(int c = 0; c < 
 					players.get(i).getHand().getNumberOfCardsInHand(); c++){
 				deck.discardCard(players.get(i).getHand().
@@ -219,8 +233,8 @@ public class BlackJack implements CardGame {
 	}
 
 	/**
-	 * This method will be replaced with a shorter one
-	 * @param i element to select correct player
+	 * This method addresses the user by player or their preferred name
+	 * @param i the current element in the list of players
 	 * @param players list of players
 	 */
 	private void addressUser(int i, List<Player> players) {
@@ -268,7 +282,7 @@ public class BlackJack implements CardGame {
 
 	/**
 	 * This method sets the card values for a hand 
-	 * @param i 
+	 * @param i the current element in the list of players
 	 * @param hand is the current players hand
 	 * @param mg is the message class
 	 */
@@ -379,6 +393,7 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 		dealer.setPersonalID(1138);
 		dealer.setDealer(true);
 		dealer.setPlayerAlias("The Baron");	
+		dealer.setPlayerPreferredName(dealer.getPlayerAlias());
 	
 		players.add(dealer);
 		playerPopulation++;
@@ -507,10 +522,6 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 		winner.setWallet(winner.getWallet() + totalPrize);
 		//winners bet pool reset to 0 state
 		winner.setBetPool(0);
-		//TODO remove testing code
-		System.out.println("the value of the current wallet is " + winner.getWallet());
-		System.out.println("the value of the dealers waller is " + dealer.getWallet());
-
 	}
 	
 	/**
@@ -523,17 +534,21 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 		//losers bet pool is moved to dealers wallet
 		dealer.setWallet(dealer.getWallet() + loser.getBetPool());
 		//losers bet pool reset to zero
-		loser.setBetPool(0);
-		//TODO remove testing code
-		System.out.println("the value of the current wallet is " + loser.getWallet());
-		System.out.println("the value of the dealers waller is " + dealer.getWallet());
-		
+		loser.setBetPool(0);	
 	}
 	
-	@Override
-	public void requestShulle() {
-		// TODO Auto-generated method stub
-		
+	/**
+	 * This method make sure at least half the deck is in the ready cards list
+	 * if not the method will instruct the discard pile to add it self to the 
+	 * ready cards and shuffle.
+	 * @Override
+	 */
+	public void requestShuffle(DeckVO deck) {
+
+		if (deck.getReadyCards().size() < 25){
+			deck.reload();
+			deck.shuffle(deck);
+		}
 	}
 
 	/**

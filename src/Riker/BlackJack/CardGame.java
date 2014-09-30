@@ -19,6 +19,6 @@ public interface CardGame {
 	//mandatory methods
 	public void process();
 	public void checkWin(List<Player> players, int population, Message mg);
-	public void requestShulle();
+	public void requestShuffle(DeckVO deck);
 	
 }
