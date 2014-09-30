@@ -28,22 +28,24 @@ public class Hand {
 
 	public void printDealerHand(DeckVO deck){
 		Message mg = new Message();
-		String currentRank = null;
-		String currentSuit = null;
+		//String currentRank = null;
+		//String currentSuit = null;
 		
 		System.out.println();
 		
-		mg.displayEnglishMessage(1, numberOfCardsInHand);
+		mg.displayMessage(1, numberOfCardsInHand);
 
 		 for ( int count = 1 ; count < numberOfCardsInHand; count++ ) {
 			 
+			 cardsInHand.get(count).toString();
+	/*		 TODO where we are working
 			currentRank = ((StandardDeck) deck).setCurrentRank(cardsInHand.
 						get(count).getRank());
 			currentSuit = ((StandardDeck) deck).setCurrentSuit(cardsInHand.
 					get(count).getSuit());
 			
-		mg.displayEnglishMessage(1, currentRank, currentSuit);
-
+		mg.displayMessage(1, currentRank, currentSuit);
+*/
 		 }
 		
 	}
@@ -53,7 +55,7 @@ public class Hand {
 		String currentRank = null;
 		String currentSuit = null;
 		
-		mg.displayEnglishMessage(2, numberOfCardsInHand);
+		mg.displayMessage(2, numberOfCardsInHand);
 		
 		 for ( int count = 0 ; count < numberOfCardsInHand; count++ ) {
 			 
@@ -62,7 +64,7 @@ public class Hand {
 			currentSuit = ((StandardDeck) deck).setCurrentSuit(cardsInHand.
 					get(count).getSuit());
 			
-			mg.displayEnglishMessage(2, currentRank, currentSuit);
+			mg.displayMessage(2, currentRank, currentSuit);
 		 }
 	}
 	

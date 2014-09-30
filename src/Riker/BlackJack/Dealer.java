@@ -13,11 +13,14 @@ package Riker.BlackJack;
  */
 
 public class Dealer extends Player {
-
-
-	
+	//empty constructor
 	public Dealer() {
 		this.setWallet(500);
+	}
+	
+	//this sets the dealers wallet to increase in size per population
+	public Dealer(int playerPopulation) {
+		this.setWallet(500 * playerPopulation);
 	}
 /**
  * This method lets the dealer remove a card from the deck and place it in the 

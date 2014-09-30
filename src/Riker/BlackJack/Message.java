@@ -13,9 +13,12 @@ package Riker.BlackJack;
  */
 
 public class Message {
+	public final static int WELCOME = 1;
+	public final static int REQUEST_NUMBER_OF_PLAYERS = 2;
 	public final static int CONTINUE_MESSAGE = 18;
 	public final static int THANKYOU = 19;
 	public final static int INCORRECT_INPUT = 20;
+	public final static int LOW_FUND = 21;
 	
 	//empty constructor
 	public Message() {
@@ -28,7 +31,7 @@ public class Message {
  * This method displays the standard English messages
  * @param m
  */
-	public void displayEnglishMessage(int m) {
+	public void displayMessage(int m) {
 		
 		switch (m){
 		case 1:
@@ -133,7 +136,7 @@ public class Message {
 * @param dealer 
 * @override
 */
-	public void displayEnglishMessage(int m , Dealer dealer) {
+	public void displayMessage(int m , Dealer dealer) {
 		switch (m){
 		case 1:
 			System.out.println("Welcome, my name is " + dealer.getFirstName() + 
@@ -155,7 +158,7 @@ public class Message {
 * @param m
 * @param value
 */
-	public void displayEnglishMessage(int m, int num) {
+	public void displayMessage(int m, int num) {
 		switch (m){
 		case 1:
 			System.out.println("number of cards in the dealers hand is : " + 
@@ -187,6 +190,11 @@ public class Message {
 			System.out.println("the current hands total value is: " + num );
 			System.out.println();
 		break;
+		case 21:
+			System.out.println("You don't have that kinda cash \n the current "
+					+ "total funds in your wallet is: "	+ num );
+			System.out.println();
+		break;
 		default:
 			System.out.println("something went horribly wrong in the message "
 					+ "class");
@@ -202,7 +210,7 @@ public class Message {
  * @param string1
  * @param string2
  */
-	public void displayEnglishMessage(int m, String activeString1,
+	public void displayMessage(int m, String activeString1,
 			String activeString2) {
 		switch (m){
 		case 1:
@@ -232,7 +240,7 @@ public class Message {
 	 * @param value1
 	 * @param value2
 	 */
-	public void displayEnglishMessage(int m, int num1, int num2){
+	public void displayMessage(int m, int num1, int num2){
 		switch (m){
 		case 1:
 			System.out.println("player " + num1 + " you have " + num2 + 
@@ -256,7 +264,7 @@ public class Message {
 	 * @param value
 	 * @param string
 	 */
-	public void displayEnglishMessage(int m, int num, String activeString){
+	public void displayMessage(int m, int num, String activeString){
 		switch (m){
 		case 1:
 			System.out.println( activeString + " you have " + num + 

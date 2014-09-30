@@ -83,7 +83,7 @@ public class StandardDeck implements DeckVO{
 		String currentSuit = null;
 		
 		
-		mg.displayEnglishMessage(3, readyCards.size());
+		mg.displayMessage(3, readyCards.size());
 		 
 		 for ( int count = 0 ; count < readyCards.size(); count++ ) {
 
@@ -91,7 +91,7 @@ public class StandardDeck implements DeckVO{
 			 
 			 currentSuit = setCurrentSuit(readyCards.get(count).getSuit());
 			 
-		mg.displayEnglishMessage(3, currentRank, currentSuit);
+		mg.displayMessage(3, currentRank, currentSuit);
 		 }
 	}
 	
@@ -123,9 +123,6 @@ public class StandardDeck implements DeckVO{
 		activeCard = readyCards.get(0);
 		readyCards.remove(0);
 		
-		//error checking
-		//System.out.println("active card rank" + activeCard.getRank() + " and " + 
-		//		activeCard.getSuit());
 		return activeCard;
 	}
 	
