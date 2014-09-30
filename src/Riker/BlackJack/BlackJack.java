@@ -76,7 +76,6 @@ public class BlackJack implements CardGame {
 	
 		for (int i = 0; i < players.size(); i++){
 			//TODO remove testing system out
-			
 			System.out.println(players.get(i).getPlayerPreferredName() + 
 					" cards discard");
 			for(int c = 0; c < 
