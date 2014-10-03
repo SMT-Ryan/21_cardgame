@@ -29,9 +29,9 @@ public class Dealer extends Player {
  * @param hand
  * @param deck
  */
-	public void drawCardToHand(Hand hand, DeckVO deck) {
+	public void drawCardToHand(Hand hand, DeckInterface deck) {
+		hand.addCardToHand((deck).getCard());
 		
-		hand.addCardToHand(((StandardDeck) deck).getCard());
 	}
 	
 	

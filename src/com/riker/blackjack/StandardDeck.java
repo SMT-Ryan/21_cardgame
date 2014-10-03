@@ -26,8 +26,8 @@ import java.util.Map;
  */
 
 public class StandardDeck extends AbstractDeck {
-	/**
-	 * 
+	/*
+	 * list of suits for a standard deck
 	 */
     List<Suit> suits = new ArrayList<Suit>(){
 		private static final long serialVersionUID = 1L; {
@@ -37,34 +37,28 @@ public class StandardDeck extends AbstractDeck {
     		add(new Suit("Hearts", 4));
     	}
     };
-    
+    /*
+     * List of card ranks for standard deck
+     */
     List<Rank> ranks = new ArrayList<Rank>(){
 		private static final long serialVersionUID = 1L; {
     		add(new Rank("Ace", 1));
-    		add(new Rank("Two", 2));
+    		add(new Rank("Deuce", 2));
     		add(new Rank("Three", 3));
     		add(new Rank("Four", 4));
+    		add(new Rank("Five", 5));
+    		add(new Rank("Six", 6));
+    		add(new Rank("Seven", 7));
+    		add(new Rank("Eight", 8));
+    		add(new Rank("Nine", 9));
+    		add(new Rank("Ten", 10));
+    		add(new Rank("Jack", 11));
+    		add(new Rank("Queen", 5));
+    		add(new Rank("King", 5));
+    		
     	}
     };
-		
-    /*
-     * constant values of card ranks 
-     */
-    public final static int ACE = 1;
-    public final static int DEUCE = 2;
-    public final static int THREE = 3;
-    public final static int FOUR = 4;
-    public final static int FIVE = 5;
-    public final static int SIX = 6;
-    public final static int SEVEN = 7;
-    public final static int EIGHT = 8;
-    public final static int NINE = 9;
-    public final static int TEN = 10;
-    public final static int JACK = 11;
-    public final static int QUEEN = 12;
-    public final static int KING = 13;
 
-	
 	//constructor
 	public StandardDeck() {
 		
@@ -72,7 +66,6 @@ public class StandardDeck extends AbstractDeck {
 			for(Rank rank : ranks ){
 				CardVO card = new CardVO(suit, rank);
 				readyCards.add(card);
-				System.out.println(card);
 			}
 		}
 	}
@@ -90,7 +83,7 @@ public class StandardDeck extends AbstractDeck {
 	 * 	@Override
 	 * 	@return the list of cards after being shuffled.
 	 */
-	public DeckVO shuffle(DeckVO deck) {
+	public DeckInterface shuffle(DeckInterface deck) {
 		
 		Collections.shuffle(deck.getReadyCards());
 		return deck;

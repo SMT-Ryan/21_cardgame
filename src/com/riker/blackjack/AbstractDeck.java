@@ -6,7 +6,7 @@ import java.util.List;
 
 /****************************************************************************
  * <b>Title</b>: AbstractDeck.java <p/>
- * <b>Project</b>: WebCrescendo <p/>
+ * <b>Project</b>: 21 game <p/>
  * <b>Description: </b> Put Something Here
  * <p/>
  * <b>Copyright:</b> Copyright (c) 2014<p/>
@@ -16,7 +16,7 @@ import java.util.List;
  * @since Sep 30, 2014<p/>
  * @updates:
  ****************************************************************************/
-public abstract class AbstractDeck implements DeckVO {
+public abstract class AbstractDeck implements DeckInterface {
 
     protected List<CardVO> readyCards = new ArrayList<>(52);
     protected List<CardVO> discardPile = new ArrayList<>(52);
@@ -27,9 +27,6 @@ public abstract class AbstractDeck implements DeckVO {
 	@Override
 	public void printDeck() {
 		Message mg = new Message();
-		String currentRank = null;
-		String currentSuit = null;
-		
 		
 		mg.displayMessage(3, readyCards.size());
 		 

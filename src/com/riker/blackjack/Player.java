@@ -26,7 +26,7 @@ public class Player extends PersonVO {
 		this.setPlayerPreferredName("Player");
 	}
 	
-	public void printHand(DeckVO deck){
+	public void printHand(DeckInterface deck){
 		hand.printHand(deck);
 	}
 

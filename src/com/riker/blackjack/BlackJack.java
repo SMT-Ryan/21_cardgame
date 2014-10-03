@@ -38,7 +38,7 @@ public class BlackJack implements CardGame {
 		Message mg = new Message();
 		
 		//declare a deck followed by shuffling the deck
-		DeckVO deck = new StandardDeck();
+		DeckInterface deck = new StandardDeck();
 		deck = deck.shuffle(deck);
 		
 		//declares a dealer, and sets its variables
@@ -74,7 +74,7 @@ public class BlackJack implements CardGame {
 	 * @param players
 	 * @param deck
 	 */
-	private void reprocess(List<Player> players, DeckVO deck, Dealer dealer, 
+	private void reprocess(List<Player> players, DeckInterface deck, Dealer dealer, 
 		 Message mg) {
 		int playerPopulation = players.size() -1;
 		
@@ -105,10 +105,12 @@ public class BlackJack implements CardGame {
 	 * @param dealer current dealer
 	 * @param deck a standard deck of 52
 	 */
-	private void dealerSetup(Dealer dealer, DeckVO deck) {
+	private void dealerSetup(Dealer dealer, DeckInterface deck) {
 		for (int i = 0 ; i <2; i++){
 			dealer.drawCardToHand(dealer.getHand(), deck);
+			
 		}
+		dealer.getHand().getCardsInHand().get(0).setVisible(false);
 		
 	}
 	/**
@@ -119,7 +121,7 @@ public class BlackJack implements CardGame {
 	 * @param dealer 
 	 * @param mg instance of the message class.
 	 */
-	private void requestContinue(List<Player> players, DeckVO deck, 
+	private void requestContinue(List<Player> players, DeckInterface deck, 
 			Dealer dealer, Message mg) {
 		String input = null;
 		while(true){
@@ -168,7 +170,7 @@ public class BlackJack implements CardGame {
 	 * @param deck a standard deck of 52 cards
 	 * @param dealer 
 	 */
-	private void playDealerHand(DeckVO deck, Dealer dealer, Message mg) {
+	private void playDealerHand(DeckInterface deck, Dealer dealer, Message mg) {
 		
 		//sets dealers hands value
 		setHandValue(dealer.getHand(), dealer , deck);
@@ -210,7 +212,7 @@ public class BlackJack implements CardGame {
 	 * @param players
 	 * @param dealer 
 	 */
-	public void playHand(List<Player> players, DeckVO deck, Dealer dealer,
+	public void playHand(List<Player> players, DeckInterface deck, Dealer dealer,
 			Message mg) {
 		
 		mg.displayMessage(4);
@@ -242,7 +244,7 @@ public class BlackJack implements CardGame {
 	 * @param deck	a standard deck of 52 cards
 	 * @param mg the message handling class
 	 */
-	private void requestHitStay(Player activePlayer, Dealer dealer, DeckVO deck,
+	private void requestHitStay(Player activePlayer, Dealer dealer, DeckInterface deck,
 			Message mg) {
 		if (activePlayer.getHand().getValue() == 21){
 			
@@ -315,7 +317,7 @@ public class BlackJack implements CardGame {
 	 * @param dealer the games dealer
 	 * @param deck a standard 52 card deck
 	 */
-	private void setHandValue(Hand hand, Dealer dealer, DeckVO deck) {
+	private void setHandValue(Hand hand, Dealer dealer, DeckInterface deck) {
 		
 		Message mg = new Message();
 
@@ -363,7 +365,7 @@ public class BlackJack implements CardGame {
 	 * until player busts or stays
 	 * @param dealer 
 	 */
-	private void playerDeal(Hand hand, DeckVO deck, Dealer dealer) {
+	private void playerDeal(Hand hand, DeckInterface deck, Dealer dealer) {
 		for (int i = 0 ; i <2; i++){
 		dealer.drawCardToHand(hand, deck);
 		}
@@ -409,7 +411,7 @@ public class BlackJack implements CardGame {
 	 * @return
 	 */
 private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players, 
-		DeckVO deck, Message mg) {
+		DeckInterface deck, Message mg) {
 	
 			//title message
 			mg.displayMessage(Message.WELCOME);
@@ -426,7 +428,7 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 			dealerSetup(dealer, deck);		
 
 			//display dealers cards for all
-			dealer.getHand().printDealerHand(deck);
+			dealer.getHand().printVisibleHand(deck);
 
 		return playerPopulation;
 	}
@@ -592,7 +594,7 @@ private int gameSetUp(Dealer dealer, int playerPopulation, List<Player> players,
 	 * ready cards and shuffle.
 	 * @Override
 	 */
-	public void requestShuffle(DeckVO deck) {
+	public void requestShuffle(DeckInterface deck) {
 
 		if (deck.getReadyCards().size() < 25){
 			deck.reload();

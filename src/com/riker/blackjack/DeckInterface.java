@@ -14,16 +14,16 @@ import java.util.List;
  * @since 09/23/2014 last update: never
  */
 
-public interface DeckVO {
+public interface DeckInterface {
    
 	// mandatory methods
-	public DeckVO shuffle(DeckVO deck);
+	public DeckInterface shuffle(DeckInterface deck);
 
 	public void reload();
 
 	/**
 	 * method that returns the list of cards in a deck.
-	 * @return blah
+	 * @return 
 	 */
 	public List<CardVO> getReadyCards();
 	
@@ -32,5 +32,12 @@ public interface DeckVO {
 	 * cards in discard list 
 	 */
 	public void printDeck();
+	
+	/**
+	 * A method that will be used by the dealer to get a card and place it in 
+	 * a hand
+	 * @return a Card
+	 */
+	public CardVO getCard(); 
 
 }

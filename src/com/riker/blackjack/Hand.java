@@ -30,24 +30,22 @@ public class Hand {
  * first card face down.
  * @param deck a standard deck of 52 cards
  */
-	public void printDealerHand(DeckVO deck){
+	public void printVisibleHand(DeckInterface deck){
 		Message mg = new Message();
-		String currentRank = null;
-		String currentSuit = null;
 		
 		System.out.println();
 		
 		mg.displayMessage(1, numberOfCardsInHand);
 
-		 for ( int count = 1 ; count < numberOfCardsInHand; count++ ) {
+		 for ( int count = 0 ; count < numberOfCardsInHand; count++ ) {
+			 if (this.cardsInHand.get(count).getVisible()){
+				 System.out.println(this.cardsInHand.get(count));
+			 }else if (!this.cardsInHand.get(count).getVisible()){
+				 System.out.println("facedown y'all");
+			 }else{
+				 //error
+			 }
 			 
-			currentRank = ((StandardDeck) deck).setCurrentRank(cardsInHand.
-						get(count).getRank());
-			currentSuit = ((StandardDeck) deck).setCurrentSuit(cardsInHand.
-					get(count).getSuit());
-			
-		mg.displayMessage(1, currentRank, currentSuit);
-
 		 }
 		
 	}
@@ -56,21 +54,13 @@ public class Hand {
 	 * 	showing all cards
 	 * @param deck a standard deck of 52
 	 */
-	public void printHand(DeckVO deck) {
+	public void printHand(DeckInterface deck) {
 		Message mg = new Message();
-		String currentRank = null;
-		String currentSuit = null;
 		
 		mg.displayMessage(2, numberOfCardsInHand);
 		
 		 for ( int count = 0 ; count < numberOfCardsInHand; count++ ) {
-			 
-			currentRank = ((StandardDeck) deck).setCurrentRank(cardsInHand.
-						get(count).getRank());
-			currentSuit = ((StandardDeck) deck).setCurrentSuit(cardsInHand.
-					get(count).getSuit());
-			
-			mg.displayMessage(2, currentRank, currentSuit);
+			 System.out.println(this.cardsInHand.get(count));
 		 }
 	}
 	

@@ -21,6 +21,8 @@ public class CardVO {
 	private Suit suitVo = null;
 	private Rank rankVo = null;
 	
+	private Boolean visible = false;
+	
 	public static void main(String[] args) {
 		CardVO card = new CardVO(new Suit("Diamonds", 1), new Rank("Jack", 11));
 		System.out.println(card);
@@ -34,12 +36,6 @@ public class CardVO {
 	public CardVO(Suit suiteVo, Rank rankVo) {
 		this.suitVo = suiteVo;
 		this.rankVo = rankVo;
-	}
-
-	//complete constructor
-	public CardVO(int rank, int suit) {
-		this.rank = rank;
-		this.suit = suit;
 	}
 	
 	/*
@@ -101,6 +97,20 @@ public class CardVO {
 	 */
 	public void setRankVo(Rank rankVo) {
 		this.rankVo = rankVo;
+	}
+
+	/**
+	 * @return the visible
+	 */
+	public Boolean getVisible() {
+		return visible;
+	}
+
+	/**
+	 * @param visible the visible to set
+	 */
+	public void setVisible(Boolean visible) {
+		this.visible = visible;
 	}
 
 }
